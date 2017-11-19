@@ -1,16 +1,18 @@
-#include <Python/Python.h>
+#include <Python.h>
 #include "EasyPIO.h"
 
 // Code from Python documentation with slight modifications
 
 int getWeatherInt()
 {
+	// Make c actually import the pythonpath
+setenv("PYTHONPATH", ".", 1);
     // Create the arguments
     int argc = 4;
     char** argv = (char**)malloc(sizeof(char*)*argc);
     argv[0] = "./apiCall";
     argv[1] = "apiCall";
-    argv[2] = "main";
+    argv[2] = "mainFunc";
     argv[3] = "91711";
     
     PyObject *pName, *pModule, *pDict, *pFunc;
@@ -28,7 +30,6 @@ int getWeatherInt()
     Py_Initialize();
     pName = PyUnicode_FromString(argv[1]);
     /* Error checking of pName left out */
-
     pModule = PyImport_Import(pName);
     Py_DECREF(pName);
 
@@ -106,16 +107,20 @@ int main(){
 
     printf("Starting program \n");
 
+	int i = 0;
     // While loop forever, because we want to constantly be checking
     while(1){
         // Get the weather bits
         int weatherBitVal = getWeatherInt();
-
+//	int weatherBitVal = 0;
         printf("Bits have integer value of %d \n", weatherBitVal);
-
+	printf("%d \n", i);
         // Wait for 2 minutes
-        delayMinutes(2);
+//        delayMinutes(2);
+
+	printf("%d \n", i);
     }
+printf("for loop done \n");
 
 
 
