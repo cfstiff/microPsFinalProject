@@ -5,15 +5,22 @@ from pytz import timezone
 
 API_KEY = '4f6f8f30f593ed64cec14b81dd480eb2'
 
-def multiply(a,b):
-    print("Will compute", a, "times", b)
-    c = 0
-    for i in range(0, a):
-        c = c + b
-    return c
+
+def main(zipCode):
+	'''
+		Takes in a zipcode, and returns the correct sequence of bits
+	'''
+
+	# get the weather dictionary
+	weatherDict = getWeather(91711)
+	
+	# Run the final
+	return setWeatherBits(weatherDict)
 
     
 def getWeather(zipCode):
+
+	zipCode = int(zipCode)
 
 	# Create the parameters
 	payload = {'zip': zipCode, 'APPID': API_KEY, 'units': "Imperial"}
@@ -79,6 +86,30 @@ def setWeatherBits(weatherDictionary):
 		if 'snow' in weatherCond['main']:
 			currentSnow = 1
 
+	finalArray = brightnessBits + weatherBits
+
+	# Convert the bits to an integer, and send that
+	intToReturn = convertBitsToInt(finalArray)
+
+	return intToReturn
+
+
+def convertBitsToInt(bitArray):
+	'''
+		Takes in a array of bits and converts it to a int
+	'''
+	finalResult = 0
+
+	# Flip the list because it's in MSB order
+	bitArray.reverse()
+
+	# Loop through the array
+	for i in range(len(bitArray)):
+
+		# Add the bit * 2^i to our final result
+		finalResult += ((2**i) * bitArray[i])
+
+	return finalResult
 
 
 
