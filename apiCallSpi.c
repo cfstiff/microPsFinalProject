@@ -27,7 +27,7 @@ setenv("PYTHONPATH", ".", 1);
         return 1;
     }
 
-    Py_Initialize();
+     Py_Initialize();
     pName = PyUnicode_FromString(argv[1]);
     /* Error checking of pName left out */
     pModule = PyImport_Import(pName);
@@ -77,7 +77,7 @@ setenv("PYTHONPATH", ".", 1);
         fprintf(stderr, "Failed to load \"%s\"\n", argv[1]);
         return 1;
     }
-    Py_Finalize();
+//    Py_Finalize();
     return outputVal;
 }
 
@@ -104,22 +104,24 @@ int main(){
     // We only need to initialize EasyPIO and SPI once
     pioInit();
     spiInit(250, 0);
-
     printf("Starting program \n");
 
-	int i = 0;
+int i = 0;
     // While loop forever, because we want to constantly be checking
-    while(1){
-        // Get the weather bits
-        int weatherBitVal = getWeatherInt();
-//	int weatherBitVal = 0;
-        printf("Bits have integer value of %d \n", weatherBitVal);
-	printf("%d \n", i);
-        // Wait for 2 minutes
-//        delayMinutes(2);
+    while(i < 4){
+      	 // Get the weather bits
+	printf("loop ran");        
+int weatherBitVal = getWeatherInt();
 
-	printf("%d \n", i);
-    }
+        printf("Bits have integer value of %d \n", weatherBitVal);
+	printf("%d \n", weatherBitVal);
+	i++;
+	printf("Delaying");
+	delayMinutes(5);
+	printf("%d \n", i);    
+}
+// Stop the python interpreter
+Py_Finalize();
 printf("for loop done \n");
 
 

@@ -13,7 +13,7 @@ def mainFunc(zipCode):
 
 	# get the weather dictionary
 	weatherDict = getWeather(91711)
-	
+		
 	# Run the final
 	return setWeatherBits(weatherDict)
 
@@ -73,6 +73,12 @@ def setWeatherBits(weatherDictionary):
 
 	# Entirely padding
 	paddingBits = [1, 1, 1, 1, 1, 1, 1, 1]
+
+	# Check to make sure we actually have data. If we don't, just return 0
+	try:
+		weatherDictionary["coord"]
+	except KeyError:
+		return 0
 
 	# Get the time
 	getCurrentTime(weatherDictionary["coord"])
