@@ -1,0 +1,2010 @@
+Fitter report for spimoduletest
+Thu Nov 30 20:34:40 2017
+Quartus II 32-bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Fitter Summary
+  3. Fitter Settings
+  4. Parallel Compilation
+  5. I/O Assignment Warnings
+  6. Incremental Compilation Preservation Summary
+  7. Incremental Compilation Partition Settings
+  8. Incremental Compilation Placement Preservation
+  9. Pin-Out File
+ 10. Fitter Resource Usage Summary
+ 11. Fitter Partition Statistics
+ 12. Input Pins
+ 13. Output Pins
+ 14. Dual Purpose and Dedicated Pins
+ 15. I/O Bank Usage
+ 16. All Package Pins
+ 17. Fitter Resource Utilization by Entity
+ 18. Delay Chain Summary
+ 19. Pad To Core Delay Chain Fanout
+ 20. Control Signals
+ 21. Global & Other Fast Signals
+ 22. Non-Global High Fan-Out Signals
+ 23. Other Routing Usage Summary
+ 24. LAB Logic Elements
+ 25. LAB-wide Signals
+ 26. LAB Signals Sourced
+ 27. LAB Signals Sourced Out
+ 28. LAB Distinct Inputs
+ 29. I/O Rules Summary
+ 30. I/O Rules Details
+ 31. I/O Rules Matrix
+ 32. Fitter Device Options
+ 33. Operating Settings and Conditions
+ 34. Estimated Delay Added for Hold Timing Summary
+ 35. Estimated Delay Added for Hold Timing Details
+ 36. Fitter Messages
+ 37. Fitter Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++--------------------------------------------------------------------------------------+
+; Fitter Summary                                                                       ;
++------------------------------------+-------------------------------------------------+
+; Fitter Status                      ; Successful - Thu Nov 30 20:34:40 2017           ;
+; Quartus II 32-bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
+; Revision Name                      ; spimoduletest                                   ;
+; Top-level Entity Name              ; spimoduletest                                   ;
+; Family                             ; Cyclone IV E                                    ;
+; Device                             ; EP4CE6E22C8                                     ;
+; Timing Models                      ; Final                                           ;
+; Total logic elements               ; 1,388 / 6,272 ( 22 % )                          ;
+;     Total combinational functions  ; 1,358 / 6,272 ( 22 % )                          ;
+;     Dedicated logic registers      ; 1,341 / 6,272 ( 21 % )                          ;
+; Total registers                    ; 1341                                            ;
+; Total pins                         ; 11 / 92 ( 12 % )                                ;
+; Total virtual pins                 ; 0                                               ;
+; Total memory bits                  ; 0 / 276,480 ( 0 % )                             ;
+; Embedded Multiplier 9-bit elements ; 0 / 30 ( 0 % )                                  ;
+; Total PLLs                         ; 0 / 2 ( 0 % )                                   ;
++------------------------------------+-------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Fitter Settings                                                                                                                                            ;
++----------------------------------------------------------------------------+---------------------------------------+---------------------------------------+
+; Option                                                                     ; Setting                               ; Default Value                         ;
++----------------------------------------------------------------------------+---------------------------------------+---------------------------------------+
+; Device                                                                     ; EP4CE6E22C8                           ;                                       ;
+; Nominal Core Supply Voltage                                                ; 1.2V                                  ;                                       ;
+; Minimum Core Junction Temperature                                          ; 0                                     ;                                       ;
+; Maximum Core Junction Temperature                                          ; 85                                    ;                                       ;
+; Fit Attempts to Skip                                                       ; 0                                     ; 0.0                                   ;
+; Device I/O Standard                                                        ; 2.5 V                                 ;                                       ;
+; Use smart compilation                                                      ; Off                                   ; Off                                   ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                                    ; On                                    ;
+; Enable compact report table                                                ; Off                                   ; Off                                   ;
+; Auto Merge PLLs                                                            ; On                                    ; On                                    ;
+; Router Timing Optimization Level                                           ; Normal                                ; Normal                                ;
+; Perform Clocking Topology Analysis During Routing                          ; Off                                   ; Off                                   ;
+; Placement Effort Multiplier                                                ; 1.0                                   ; 1.0                                   ;
+; Router Effort Multiplier                                                   ; 1.0                                   ; 1.0                                   ;
+; Optimize Hold Timing                                                       ; All Paths                             ; All Paths                             ;
+; Optimize Multi-Corner Timing                                               ; On                                    ; On                                    ;
+; PowerPlay Power Optimization                                               ; Normal compilation                    ; Normal compilation                    ;
+; SSN Optimization                                                           ; Off                                   ; Off                                   ;
+; Optimize Timing                                                            ; Normal compilation                    ; Normal compilation                    ;
+; Optimize Timing for ECOs                                                   ; Off                                   ; Off                                   ;
+; Regenerate full fit report during ECO compiles                             ; Off                                   ; Off                                   ;
+; Optimize IOC Register Placement for Timing                                 ; Normal                                ; Normal                                ;
+; Limit to One Fitting Attempt                                               ; Off                                   ; Off                                   ;
+; Final Placement Optimizations                                              ; Automatically                         ; Automatically                         ;
+; Fitter Aggressive Routability Optimizations                                ; Automatically                         ; Automatically                         ;
+; Fitter Initial Placement Seed                                              ; 1                                     ; 1                                     ;
+; PCI I/O                                                                    ; Off                                   ; Off                                   ;
+; Weak Pull-Up Resistor                                                      ; Off                                   ; Off                                   ;
+; Enable Bus-Hold Circuitry                                                  ; Off                                   ; Off                                   ;
+; Auto Packed Registers                                                      ; Auto                                  ; Auto                                  ;
+; Auto Delay Chains                                                          ; On                                    ; On                                    ;
+; Auto Delay Chains for High Fanout Input Pins                               ; Off                                   ; Off                                   ;
+; Allow Single-ended Buffer for Differential-XSTL Input                      ; Off                                   ; Off                                   ;
+; Treat Bidirectional Pin as Output Pin                                      ; Off                                   ; Off                                   ;
+; Perform Physical Synthesis for Combinational Logic for Fitting             ; Off                                   ; Off                                   ;
+; Perform Physical Synthesis for Combinational Logic for Performance         ; Off                                   ; Off                                   ;
+; Perform Register Duplication for Performance                               ; Off                                   ; Off                                   ;
+; Perform Logic to Memory Mapping for Fitting                                ; Off                                   ; Off                                   ;
+; Perform Register Retiming for Performance                                  ; Off                                   ; Off                                   ;
+; Perform Asynchronous Signal Pipelining                                     ; Off                                   ; Off                                   ;
+; Fitter Effort                                                              ; Auto Fit                              ; Auto Fit                              ;
+; Physical Synthesis Effort Level                                            ; Normal                                ; Normal                                ;
+; Logic Cell Insertion - Logic Duplication                                   ; Auto                                  ; Auto                                  ;
+; Auto Register Duplication                                                  ; Auto                                  ; Auto                                  ;
+; Auto Global Clock                                                          ; On                                    ; On                                    ;
+; Auto Global Register Control Signals                                       ; On                                    ; On                                    ;
+; Reserve all unused pins                                                    ; As input tri-stated with weak pull-up ; As input tri-stated with weak pull-up ;
+; Synchronizer Identification                                                ; Off                                   ; Off                                   ;
+; Enable Beneficial Skew Optimization                                        ; On                                    ; On                                    ;
+; Optimize Design for Metastability                                          ; On                                    ; On                                    ;
+; Force Fitter to Avoid Periphery Placement Warnings                         ; Off                                   ; Off                                   ;
+; Enable input tri-state on active configuration pins in user mode           ; Off                                   ; Off                                   ;
++----------------------------------------------------------------------------+---------------------------------------+---------------------------------------+
+
+
+Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 8      ;
+; Maximum allowed            ; 1      ;
++----------------------------+--------+
+
+
++--------------------------------------------------+
+; I/O Assignment Warnings                          ;
++-----------+--------------------------------------+
+; Pin Name  ; Reason                               ;
++-----------+--------------------------------------+
+; sckout    ; Missing drive strength and slew rate ;
+; sckout2   ; Missing drive strength and slew rate ;
+; sckout3   ; Missing drive strength and slew rate ;
+; sckout4   ; Missing drive strength and slew rate ;
+; mosilarg  ; Missing drive strength and slew rate ;
+; mosimed   ; Missing drive strength and slew rate ;
+; mosismal  ; Missing drive strength and slew rate ;
+; mosirain1 ; Missing drive strength and slew rate ;
+; mosirain2 ; Missing drive strength and slew rate ;
+; mosirain3 ; Missing drive strength and slew rate ;
++-----------+--------------------------------------+
+
+
++----------------------------------------------+
+; Incremental Compilation Preservation Summary ;
++---------------------+------------------------+
+; Type                ; Value                  ;
++---------------------+------------------------+
+; Placement (by node) ;                        ;
+;     -- Requested    ; 0 / 2737 ( 0.00 % )    ;
+;     -- Achieved     ; 0 / 2737 ( 0.00 % )    ;
+;                     ;                        ;
+; Routing (by net)    ;                        ;
+;     -- Requested    ; 0 / 0 ( 0.00 % )       ;
+;     -- Achieved     ; 0 / 0 ( 0.00 % )       ;
++---------------------+------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Incremental Compilation Partition Settings                                                                                                                                             ;
++--------------------------------+----------------+-------------------+-------------------------+------------------------+------------------------------+--------------------------------+
+; Partition Name                 ; Partition Type ; Netlist Type Used ; Preservation Level Used ; Netlist Type Requested ; Preservation Level Requested ; Contents                       ;
++--------------------------------+----------------+-------------------+-------------------------+------------------------+------------------------------+--------------------------------+
+; Top                            ; User-created   ; Source File       ; N/A                     ; Source File            ; N/A                          ;                                ;
+; hard_block:auto_generated_inst ; Auto-generated ; Source File       ; N/A                     ; Source File            ; N/A                          ; hard_block:auto_generated_inst ;
++--------------------------------+----------------+-------------------+-------------------------+------------------------+------------------------------+--------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------+
+; Incremental Compilation Placement Preservation                                                             ;
++--------------------------------+---------+-------------------+-------------------------+-------------------+
+; Partition Name                 ; # Nodes ; # Preserved Nodes ; Preservation Level Used ; Netlist Type Used ;
++--------------------------------+---------+-------------------+-------------------------+-------------------+
+; Top                            ; 2727    ; 0                 ; N/A                     ; Source File       ;
+; hard_block:auto_generated_inst ; 10      ; 0                 ; N/A                     ; Source File       ;
++--------------------------------+---------+-------------------+-------------------------+-------------------+
+
+
++--------------+
+; Pin-Out File ;
++--------------+
+The pin-out file can be found in F:/altera/13.0sp1/FinalProject4/output_files/spimoduletest.pin.
+
+
++----------------------------------------------------------------------+
+; Fitter Resource Usage Summary                                        ;
++---------------------------------------------+------------------------+
+; Resource                                    ; Usage                  ;
++---------------------------------------------+------------------------+
+; Total logic elements                        ; 1,388 / 6,272 ( 22 % ) ;
+;     -- Combinational with no register       ; 47                     ;
+;     -- Register only                        ; 30                     ;
+;     -- Combinational with a register        ; 1311                   ;
+;                                             ;                        ;
+; Logic element usage by number of LUT inputs ;                        ;
+;     -- 4 input functions                    ; 9                      ;
+;     -- 3 input functions                    ; 943                    ;
+;     -- <=2 input functions                  ; 406                    ;
+;     -- Register only                        ; 30                     ;
+;                                             ;                        ;
+; Logic elements by mode                      ;                        ;
+;     -- normal mode                          ; 1296                   ;
+;     -- arithmetic mode                      ; 62                     ;
+;                                             ;                        ;
+; Total registers*                            ; 1,341 / 6,684 ( 20 % ) ;
+;     -- Dedicated logic registers            ; 1,341 / 6,272 ( 21 % ) ;
+;     -- I/O registers                        ; 0 / 412 ( 0 % )        ;
+;                                             ;                        ;
+; Total LABs:  partially or completely used   ; 108 / 392 ( 28 % )     ;
+; Virtual pins                                ; 0                      ;
+; I/O pins                                    ; 11 / 92 ( 12 % )       ;
+;     -- Clock pins                           ; 1 / 3 ( 33 % )         ;
+;     -- Dedicated input pins                 ; 0 / 9 ( 0 % )          ;
+;                                             ;                        ;
+; Global signals                              ; 5                      ;
+; M9Ks                                        ; 0 / 30 ( 0 % )         ;
+; Total block memory bits                     ; 0 / 276,480 ( 0 % )    ;
+; Total block memory implementation bits      ; 0 / 276,480 ( 0 % )    ;
+; Embedded Multiplier 9-bit elements          ; 0 / 30 ( 0 % )         ;
+; PLLs                                        ; 0 / 2 ( 0 % )          ;
+; Global clocks                               ; 5 / 10 ( 50 % )        ;
+; JTAGs                                       ; 0 / 1 ( 0 % )          ;
+; CRC blocks                                  ; 0 / 1 ( 0 % )          ;
+; ASMI blocks                                 ; 0 / 1 ( 0 % )          ;
+; Impedance control blocks                    ; 0 / 4 ( 0 % )          ;
+; Average interconnect usage (total/H/V)      ; 0% / 1% / 0%           ;
+; Peak interconnect usage (total/H/V)         ; 2% / 2% / 1%           ;
+; Maximum fan-out                             ; 1283                   ;
+; Highest non-global fan-out                  ; 1283                   ;
+; Total fan-out                               ; 6411                   ;
+; Average fan-out                             ; 2.32                   ;
++---------------------------------------------+------------------------+
+*  Register count does not include registers inside RAM blocks or DSP blocks.
+
+
+
++-----------------------------------------------------------------------------------------------------+
+; Fitter Partition Statistics                                                                         ;
++---------------------------------------------+----------------------+--------------------------------+
+; Statistic                                   ; Top                  ; hard_block:auto_generated_inst ;
++---------------------------------------------+----------------------+--------------------------------+
+; Difficulty Clustering Region                ; Low                  ; Low                            ;
+;                                             ;                      ;                                ;
+; Total logic elements                        ; 1388 / 6272 ( 22 % ) ; 0 / 6272 ( 0 % )               ;
+;     -- Combinational with no register       ; 47                   ; 0                              ;
+;     -- Register only                        ; 30                   ; 0                              ;
+;     -- Combinational with a register        ; 1311                 ; 0                              ;
+;                                             ;                      ;                                ;
+; Logic element usage by number of LUT inputs ;                      ;                                ;
+;     -- 4 input functions                    ; 9                    ; 0                              ;
+;     -- 3 input functions                    ; 943                  ; 0                              ;
+;     -- <=2 input functions                  ; 406                  ; 0                              ;
+;     -- Register only                        ; 30                   ; 0                              ;
+;                                             ;                      ;                                ;
+; Logic elements by mode                      ;                      ;                                ;
+;     -- normal mode                          ; 1296                 ; 0                              ;
+;     -- arithmetic mode                      ; 62                   ; 0                              ;
+;                                             ;                      ;                                ;
+; Total registers                             ; 1341                 ; 0                              ;
+;     -- Dedicated logic registers            ; 1341 / 6272 ( 21 % ) ; 0 / 6272 ( 0 % )               ;
+;                                             ;                      ;                                ;
+; Total LABs:  partially or completely used   ; 108 / 392 ( 28 % )   ; 0 / 392 ( 0 % )                ;
+;                                             ;                      ;                                ;
+; Virtual pins                                ; 0                    ; 0                              ;
+; I/O pins                                    ; 11                   ; 0                              ;
+; Embedded Multiplier 9-bit elements          ; 0 / 30 ( 0 % )       ; 0 / 30 ( 0 % )                 ;
+; Total memory bits                           ; 0                    ; 0                              ;
+; Total RAM block bits                        ; 0                    ; 0                              ;
+; Clock control block                         ; 5 / 12 ( 41 % )      ; 0 / 12 ( 0 % )                 ;
+;                                             ;                      ;                                ;
+; Connections                                 ;                      ;                                ;
+;     -- Input Connections                    ; 0                    ; 0                              ;
+;     -- Registered Input Connections         ; 0                    ; 0                              ;
+;     -- Output Connections                   ; 0                    ; 0                              ;
+;     -- Registered Output Connections        ; 0                    ; 0                              ;
+;                                             ;                      ;                                ;
+; Internal Connections                        ;                      ;                                ;
+;     -- Total Connections                    ; 6406                 ; 5                              ;
+;     -- Registered Connections               ; 3646                 ; 0                              ;
+;                                             ;                      ;                                ;
+; External Connections                        ;                      ;                                ;
+;     -- Top                                  ; 0                    ; 0                              ;
+;     -- hard_block:auto_generated_inst       ; 0                    ; 0                              ;
+;                                             ;                      ;                                ;
+; Partition Interface                         ;                      ;                                ;
+;     -- Input Ports                          ; 1                    ; 0                              ;
+;     -- Output Ports                         ; 10                   ; 0                              ;
+;     -- Bidir Ports                          ; 0                    ; 0                              ;
+;                                             ;                      ;                                ;
+; Registered Ports                            ;                      ;                                ;
+;     -- Registered Input Ports               ; 0                    ; 0                              ;
+;     -- Registered Output Ports              ; 0                    ; 0                              ;
+;                                             ;                      ;                                ;
+; Port Connectivity                           ;                      ;                                ;
+;     -- Input Ports driven by GND            ; 0                    ; 0                              ;
+;     -- Output Ports driven by GND           ; 0                    ; 0                              ;
+;     -- Input Ports driven by VCC            ; 0                    ; 0                              ;
+;     -- Output Ports driven by VCC           ; 0                    ; 0                              ;
+;     -- Input Ports with no Source           ; 0                    ; 0                              ;
+;     -- Output Ports with no Source          ; 0                    ; 0                              ;
+;     -- Input Ports with no Fanout           ; 0                    ; 0                              ;
+;     -- Output Ports with no Fanout          ; 0                    ; 0                              ;
++---------------------------------------------+----------------------+--------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Input Pins                                                                                                                                                                                                                                                                ;
++------+-------+----------+--------------+--------------+--------------+-----------------------+--------------------+--------+----------------+---------------+-----------------+----------+--------------+--------------+---------------------------+----------------------+
+; Name ; Pin # ; I/O Bank ; X coordinate ; Y coordinate ; Z coordinate ; Combinational Fan-Out ; Registered Fan-Out ; Global ; Input Register ; Power Up High ; PCI I/O Enabled ; Bus Hold ; Weak Pull Up ; I/O Standard ; Termination Control Block ; Location assigned by ;
++------+-------+----------+--------------+--------------+--------------+-----------------------+--------------------+--------+----------------+---------------+-----------------+----------+--------------+--------------+---------------------------+----------------------+
+; clk  ; 88    ; 5        ; 34           ; 12           ; 21           ; 25                    ; 0                  ; yes    ; no             ; no            ; yes             ; no       ; Off          ; 2.5 V        ; --                        ; User                 ;
++------+-------+----------+--------------+--------------+--------------+-----------------------+--------------------+--------+----------------+---------------+-----------------+----------+--------------+--------------+---------------------------+----------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Output Pins                                                                                                                                                                                                                                                                                                                                                                                                                                                ;
++-----------+-------+----------+--------------+--------------+--------------+-----------------+------------------------+---------------+-----------+-----------------+------------+---------------+----------+--------------+--------------+------------------+-----------------------------------+---------------------------+----------------------------+-----------------------------+----------------------+----------------------+---------------------+
+; Name      ; Pin # ; I/O Bank ; X coordinate ; Y coordinate ; Z coordinate ; Output Register ; Output Enable Register ; Power Up High ; Slew Rate ; PCI I/O Enabled ; Open Drain ; TRI Primitive ; Bus Hold ; Weak Pull Up ; I/O Standard ; Current Strength ; Termination                       ; Termination Control Block ; Output Buffer Pre-emphasis ; Voltage Output Differential ; Location assigned by ; Output Enable Source ; Output Enable Group ;
++-----------+-------+----------+--------------+--------------+--------------+-----------------+------------------------+---------------+-----------+-----------------+------------+---------------+----------+--------------+--------------+------------------+-----------------------------------+---------------------------+----------------------------+-----------------------------+----------------------+----------------------+---------------------+
+; mosilarg  ; 28    ; 2        ; 0            ; 9            ; 7            ; no              ; no                     ; no            ; 2         ; no              ; no         ; no            ; no       ; Off          ; 2.5 V        ; Default          ; Series 50 Ohm without Calibration ; --                        ; no                         ; no                          ; User                 ; -                    ; -                   ;
+; mosimed   ; 31    ; 2        ; 0            ; 7            ; 0            ; no              ; no                     ; no            ; 2         ; no              ; no         ; no            ; no       ; Off          ; 2.5 V        ; Default          ; Series 50 Ohm without Calibration ; --                        ; no                         ; no                          ; User                 ; -                    ; -                   ;
+; mosirain1 ; 33    ; 2        ; 0            ; 6            ; 21           ; no              ; no                     ; no            ; 2         ; no              ; no         ; no            ; no       ; Off          ; 2.5 V        ; Default          ; Series 50 Ohm without Calibration ; --                        ; no                         ; no                          ; User                 ; -                    ; -                   ;
+; mosirain2 ; 2     ; 1        ; 0            ; 23           ; 7            ; no              ; no                     ; no            ; 2         ; no              ; no         ; no            ; no       ; Off          ; 2.5 V        ; Default          ; Series 50 Ohm without Calibration ; --                        ; no                         ; no                          ; User                 ; -                    ; -                   ;
+; mosirain3 ; 7     ; 1        ; 0            ; 21           ; 7            ; no              ; no                     ; no            ; 2         ; no              ; no         ; no            ; no       ; Off          ; 2.5 V        ; Default          ; Series 50 Ohm without Calibration ; --                        ; no                         ; no                          ; User                 ; -                    ; -                   ;
+; mosismal  ; 32    ; 2        ; 0            ; 6            ; 14           ; no              ; no                     ; no            ; 2         ; no              ; no         ; no            ; no       ; Off          ; 2.5 V        ; Default          ; Series 50 Ohm without Calibration ; --                        ; no                         ; no                          ; User                 ; -                    ; -                   ;
+; sckout    ; 30    ; 2        ; 0            ; 8            ; 14           ; no              ; no                     ; no            ; 2         ; no              ; no         ; no            ; no       ; Off          ; 2.5 V        ; Default          ; Series 50 Ohm without Calibration ; --                        ; no                         ; no                          ; User                 ; -                    ; -                   ;
+; sckout2   ; 34    ; 2        ; 0            ; 5            ; 14           ; no              ; no                     ; no            ; 2         ; no              ; no         ; no            ; no       ; Off          ; 2.5 V        ; Default          ; Series 50 Ohm without Calibration ; --                        ; no                         ; no                          ; User                 ; -                    ; -                   ;
+; sckout3   ; 3     ; 1        ; 0            ; 23           ; 14           ; no              ; no                     ; no            ; 2         ; no              ; no         ; no            ; no       ; Off          ; 2.5 V        ; Default          ; Series 50 Ohm without Calibration ; --                        ; no                         ; no                          ; User                 ; -                    ; -                   ;
+; sckout4   ; 39    ; 3        ; 1            ; 0            ; 14           ; no              ; no                     ; no            ; 2         ; no              ; no         ; no            ; no       ; Off          ; 2.5 V        ; Default          ; Series 50 Ohm without Calibration ; --                        ; no                         ; no                          ; User                 ; -                    ; -                   ;
++-----------+-------+----------+--------------+--------------+--------------+-----------------+------------------------+---------------+-----------+-----------------+------------+---------------+----------+--------------+--------------+------------------+-----------------------------------+---------------------------+----------------------------+-----------------------------+----------------------+----------------------+---------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------+
+; Dual Purpose and Dedicated Pins                                                                                         ;
++----------+-----------------------------+--------------------------+-------------------------+---------------------------+
+; Location ; Pin Name                    ; Reserved As              ; User Signal Name        ; Pin Type                  ;
++----------+-----------------------------+--------------------------+-------------------------+---------------------------+
+; 6        ; DIFFIO_L1n, DATA1, ASDO     ; As input tri-stated      ; ~ALTERA_ASDO_DATA1~     ; Dual Purpose Pin          ;
+; 8        ; DIFFIO_L2p, FLASH_nCE, nCSO ; As input tri-stated      ; ~ALTERA_FLASH_nCE_nCSO~ ; Dual Purpose Pin          ;
+; 9        ; nSTATUS                     ; -                        ; -                       ; Dedicated Programming Pin ;
+; 12       ; DCLK                        ; As output driving ground ; ~ALTERA_DCLK~           ; Dual Purpose Pin          ;
+; 13       ; DATA0                       ; As input tri-stated      ; ~ALTERA_DATA0~          ; Dual Purpose Pin          ;
+; 14       ; nCONFIG                     ; -                        ; -                       ; Dedicated Programming Pin ;
+; 21       ; nCE                         ; -                        ; -                       ; Dedicated Programming Pin ;
+; 92       ; CONF_DONE                   ; -                        ; -                       ; Dedicated Programming Pin ;
+; 94       ; MSEL0                       ; -                        ; -                       ; Dedicated Programming Pin ;
+; 96       ; MSEL1                       ; -                        ; -                       ; Dedicated Programming Pin ;
+; 97       ; MSEL2                       ; -                        ; -                       ; Dedicated Programming Pin ;
+; 97       ; MSEL3                       ; -                        ; -                       ; Dedicated Programming Pin ;
+; 101      ; DIFFIO_R3n, nCEO            ; Use as programming pin   ; ~ALTERA_nCEO~           ; Dual Purpose Pin          ;
++----------+-----------------------------+--------------------------+-------------------------+---------------------------+
+
+
++-----------------------------------------------------------+
+; I/O Bank Usage                                            ;
++----------+-----------------+---------------+--------------+
+; I/O Bank ; Usage           ; VCCIO Voltage ; VREF Voltage ;
++----------+-----------------+---------------+--------------+
+; 1        ; 7 / 11 ( 64 % ) ; 2.5V          ; --           ;
+; 2        ; 6 / 8 ( 75 % )  ; 2.5V          ; --           ;
+; 3        ; 1 / 11 ( 9 % )  ; 2.5V          ; --           ;
+; 4        ; 0 / 14 ( 0 % )  ; 2.5V          ; --           ;
+; 5        ; 1 / 13 ( 8 % )  ; 2.5V          ; --           ;
+; 6        ; 1 / 10 ( 10 % ) ; 2.5V          ; --           ;
+; 7        ; 0 / 13 ( 0 % )  ; 2.5V          ; --           ;
+; 8        ; 0 / 12 ( 0 % )  ; 2.5V          ; --           ;
++----------+-----------------+---------------+--------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; All Package Pins                                                                                                                                                                        ;
++----------+------------+----------+-----------------------------------------------------------+--------+--------------+---------+------------+-----------------+----------+--------------+
+; Location ; Pad Number ; I/O Bank ; Pin Name/Usage                                            ; Dir.   ; I/O Standard ; Voltage ; I/O Type   ; User Assignment ; Bus Hold ; Weak Pull Up ;
++----------+------------+----------+-----------------------------------------------------------+--------+--------------+---------+------------+-----------------+----------+--------------+
+; 1        ; 0          ; 1        ; RESERVED_INPUT_WITH_WEAK_PULLUP                           ;        ;              ;         ; Row I/O    ;                 ; no       ; On           ;
+; 2        ; 1          ; 1        ; mosirain2                                                 ; output ; 2.5 V        ;         ; Row I/O    ; Y               ; no       ; Off          ;
+; 3        ; 2          ; 1        ; sckout3                                                   ; output ; 2.5 V        ;         ; Row I/O    ; Y               ; no       ; Off          ;
+; 4        ;            ;          ; GND                                                       ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
+; 5        ;            ;          ; VCCINT                                                    ; power  ;              ; 1.2V    ; --         ;                 ; --       ; --           ;
+; 6        ; 5          ; 1        ; ~ALTERA_ASDO_DATA1~ / RESERVED_INPUT_WITH_WEAK_PULLUP     ; input  ; 2.5 V        ;         ; Row I/O    ; N               ; no       ; On           ;
+; 7        ; 6          ; 1        ; mosirain3                                                 ; output ; 2.5 V        ;         ; Row I/O    ; Y               ; no       ; Off          ;
+; 8        ; 7          ; 1        ; ~ALTERA_FLASH_nCE_nCSO~ / RESERVED_INPUT_WITH_WEAK_PULLUP ; input  ; 2.5 V        ;         ; Row I/O    ; N               ; no       ; On           ;
+; 9        ; 9          ; 1        ; ^nSTATUS                                                  ;        ;              ;         ; --         ;                 ; --       ; --           ;
+; 10       ; 13         ; 1        ; RESERVED_INPUT_WITH_WEAK_PULLUP                           ;        ;              ;         ; Row I/O    ;                 ; no       ; On           ;
+; 11       ; 14         ; 1        ; RESERVED_INPUT_WITH_WEAK_PULLUP                           ;        ;              ;         ; Row I/O    ;                 ; no       ; On           ;
+; 12       ; 15         ; 1        ; ~ALTERA_DCLK~                                             ; output ; 2.5 V        ;         ; Row I/O    ; N               ; no       ; On           ;
+; 13       ; 16         ; 1        ; ~ALTERA_DATA0~ / RESERVED_INPUT_WITH_WEAK_PULLUP          ; input  ; 2.5 V        ;         ; Row I/O    ; N               ; no       ; On           ;
+; 14       ; 17         ; 1        ; ^nCONFIG                                                  ;        ;              ;         ; --         ;                 ; --       ; --           ;
+; 15       ; 18         ; 1        ; #TDI                                                      ; input  ;              ;         ; --         ;                 ; --       ; --           ;
+; 16       ; 19         ; 1        ; #TCK                                                      ; input  ;              ;         ; --         ;                 ; --       ; --           ;
+; 17       ;            ; 1        ; VCCIO1                                                    ; power  ;              ; 2.5V    ; --         ;                 ; --       ; --           ;
+; 18       ; 20         ; 1        ; #TMS                                                      ; input  ;              ;         ; --         ;                 ; --       ; --           ;
+; 19       ;            ;          ; GND                                                       ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
+; 20       ; 21         ; 1        ; #TDO                                                      ; output ;              ;         ; --         ;                 ; --       ; --           ;
+; 21       ; 22         ; 1        ; ^nCE                                                      ;        ;              ;         ; --         ;                 ; --       ; --           ;
+; 22       ;            ;          ; GND                                                       ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
+; 23       ; 24         ; 1        ; GND+                                                      ;        ;              ;         ; Row I/O    ;                 ; --       ; --           ;
+; 24       ; 25         ; 2        ; GND+                                                      ;        ;              ;         ; Row I/O    ;                 ; --       ; --           ;
+; 25       ; 26         ; 2        ; GND+                                                      ;        ;              ;         ; Row I/O    ;                 ; --       ; --           ;
+; 26       ;            ; 2        ; VCCIO2                                                    ; power  ;              ; 2.5V    ; --         ;                 ; --       ; --           ;
+; 27       ;            ;          ; GND                                                       ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
+; 28       ; 31         ; 2        ; mosilarg                                                  ; output ; 2.5 V        ;         ; Row I/O    ; Y               ; no       ; Off          ;
+; 29       ;            ;          ; VCCINT                                                    ; power  ;              ; 1.2V    ; --         ;                 ; --       ; --           ;
+; 30       ; 34         ; 2        ; sckout                                                    ; output ; 2.5 V        ;         ; Row I/O    ; Y               ; no       ; Off          ;
+; 31       ; 36         ; 2        ; mosimed                                                   ; output ; 2.5 V        ;         ; Row I/O    ; Y               ; no       ; Off          ;
+; 32       ; 39         ; 2        ; mosismal                                                  ; output ; 2.5 V        ;         ; Row I/O    ; Y               ; no       ; Off          ;
+; 33       ; 40         ; 2        ; mosirain1                                                 ; output ; 2.5 V        ;         ; Row I/O    ; Y               ; no       ; Off          ;
+; 34       ; 41         ; 2        ; sckout2                                                   ; output ; 2.5 V        ;         ; Row I/O    ; Y               ; no       ; Off          ;
+; 35       ;            ; --       ; VCCA1                                                     ; power  ;              ; 2.5V    ; --         ;                 ; --       ; --           ;
+; 36       ;            ;          ; GNDA1                                                     ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
+; 37       ;            ;          ; VCCD_PLL1                                                 ; power  ;              ; 1.2V    ; --         ;                 ; --       ; --           ;
+; 38       ; 45         ; 3        ; RESERVED_INPUT_WITH_WEAK_PULLUP                           ;        ;              ;         ; Column I/O ;                 ; no       ; On           ;
+; 39       ; 46         ; 3        ; sckout4                                                   ; output ; 2.5 V        ;         ; Column I/O ; Y               ; no       ; Off          ;
+; 40       ;            ; 3        ; VCCIO3                                                    ; power  ;              ; 2.5V    ; --         ;                 ; --       ; --           ;
+; 41       ;            ;          ; GND                                                       ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
+; 42       ; 52         ; 3        ; RESERVED_INPUT_WITH_WEAK_PULLUP                           ;        ;              ;         ; Column I/O ;                 ; no       ; On           ;
+; 43       ; 53         ; 3        ; RESERVED_INPUT_WITH_WEAK_PULLUP                           ;        ;              ;         ; Column I/O ;                 ; no       ; On           ;
+; 44       ; 54         ; 3        ; RESERVED_INPUT_WITH_WEAK_PULLUP                           ;        ;              ;         ; Column I/O ;                 ; no       ; On           ;
+; 45       ;            ;          ; VCCINT                                                    ; power  ;              ; 1.2V    ; --         ;                 ; --       ; --           ;
+; 46       ; 58         ; 3        ; RESERVED_INPUT_WITH_WEAK_PULLUP                           ;        ;              ;         ; Column I/O ;                 ; --       ; --           ;
+; 47       ;            ; 3        ; VCCIO3                                                    ; power  ;              ; 2.5V    ; --         ;                 ; --       ; --           ;
+; 48       ;            ;          ; GND                                                       ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
+; 49       ; 68         ; 3        ; RESERVED_INPUT_WITH_WEAK_PULLUP                           ;        ;              ;         ; Column I/O ;                 ; no       ; On           ;
+; 50       ; 69         ; 3        ; RESERVED_INPUT_WITH_WEAK_PULLUP                           ;        ;              ;         ; Column I/O ;                 ; no       ; On           ;
+; 51       ; 70         ; 3        ; RESERVED_INPUT_WITH_WEAK_PULLUP                           ;        ;              ;         ; Column I/O ;                 ; no       ; On           ;
+; 52       ; 72         ; 3        ; RESERVED_INPUT_WITH_WEAK_PULLUP                           ;        ;              ;         ; Column I/O ;                 ; no       ; On           ;
+; 53       ; 73         ; 3        ; RESERVED_INPUT_WITH_WEAK_PULLUP                           ;        ;              ;         ; Column I/O ;                 ; no       ; On           ;
+; 54       ; 74         ; 4        ; RESERVED_INPUT_WITH_WEAK_PULLUP                           ;        ;              ;         ; Column I/O ;                 ; no       ; On           ;
+; 55       ; 75         ; 4        ; RESERVED_INPUT_WITH_WEAK_PULLUP                           ;        ;              ;         ; Column I/O ;                 ; no       ; On           ;
+; 56       ;            ; 4        ; VCCIO4                                                    ; power  ;              ; 2.5V    ; --         ;                 ; --       ; --           ;
+; 57       ;            ;          ; GND                                                       ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
+; 58       ; 80         ; 4        ; RESERVED_INPUT_WITH_WEAK_PULLUP                           ;        ;              ;         ; Column I/O ;                 ; no       ; On           ;
+; 59       ; 83         ; 4        ; RESERVED_INPUT_WITH_WEAK_PULLUP                           ;        ;              ;         ; Column I/O ;                 ; no       ; On           ;
+; 60       ; 84         ; 4        ; RESERVED_INPUT_WITH_WEAK_PULLUP                           ;        ;              ;         ; Column I/O ;                 ; no       ; On           ;
+; 61       ;            ;          ; VCCINT                                                    ; power  ;              ; 1.2V    ; --         ;                 ; --       ; --           ;
+; 62       ;            ; 4        ; VCCIO4                                                    ; power  ;              ; 2.5V    ; --         ;                 ; --       ; --           ;
+; 63       ;            ;          ; GND                                                       ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
+; 64       ; 89         ; 4        ; RESERVED_INPUT_WITH_WEAK_PULLUP                           ;        ;              ;         ; Column I/O ;                 ; no       ; On           ;
+; 65       ; 90         ; 4        ; RESERVED_INPUT_WITH_WEAK_PULLUP                           ;        ;              ;         ; Column I/O ;                 ; --       ; --           ;
+; 66       ; 93         ; 4        ; RESERVED_INPUT_WITH_WEAK_PULLUP                           ;        ;              ;         ; Column I/O ;                 ; no       ; On           ;
+; 67       ; 94         ; 4        ; RESERVED_INPUT_WITH_WEAK_PULLUP                           ;        ;              ;         ; Column I/O ;                 ; no       ; On           ;
+; 68       ; 96         ; 4        ; RESERVED_INPUT_WITH_WEAK_PULLUP                           ;        ;              ;         ; Column I/O ;                 ; no       ; On           ;
+; 69       ; 97         ; 4        ; RESERVED_INPUT_WITH_WEAK_PULLUP                           ;        ;              ;         ; Column I/O ;                 ; no       ; On           ;
+; 70       ; 98         ; 4        ; RESERVED_INPUT_WITH_WEAK_PULLUP                           ;        ;              ;         ; Column I/O ;                 ; no       ; On           ;
+; 71       ; 99         ; 4        ; RESERVED_INPUT_WITH_WEAK_PULLUP                           ;        ;              ;         ; Column I/O ;                 ; no       ; On           ;
+; 72       ; 100        ; 4        ; RESERVED_INPUT_WITH_WEAK_PULLUP                           ;        ;              ;         ; Column I/O ;                 ; no       ; On           ;
+; 73       ; 102        ; 5        ; RESERVED_INPUT_WITH_WEAK_PULLUP                           ;        ;              ;         ; Row I/O    ;                 ; no       ; On           ;
+; 74       ; 103        ; 5        ; RESERVED_INPUT_WITH_WEAK_PULLUP                           ;        ;              ;         ; Row I/O    ;                 ; no       ; On           ;
+; 75       ; 104        ; 5        ; RESERVED_INPUT_WITH_WEAK_PULLUP                           ;        ;              ;         ; Row I/O    ;                 ; no       ; On           ;
+; 76       ; 106        ; 5        ; RESERVED_INPUT_WITH_WEAK_PULLUP                           ;        ;              ;         ; Row I/O    ;                 ; no       ; On           ;
+; 77       ; 107        ; 5        ; RESERVED_INPUT_WITH_WEAK_PULLUP                           ;        ;              ;         ; Row I/O    ;                 ; no       ; On           ;
+; 78       ;            ;          ; VCCINT                                                    ; power  ;              ; 1.2V    ; --         ;                 ; --       ; --           ;
+; 79       ;            ;          ; GND                                                       ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
+; 80       ; 113        ; 5        ; RESERVED_INPUT_WITH_WEAK_PULLUP                           ;        ;              ;         ; Row I/O    ;                 ; --       ; --           ;
+; 81       ;            ; 5        ; VCCIO5                                                    ; power  ;              ; 2.5V    ; --         ;                 ; --       ; --           ;
+; 82       ;            ;          ; GND                                                       ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
+; 83       ; 117        ; 5        ; RESERVED_INPUT_WITH_WEAK_PULLUP                           ;        ;              ;         ; Row I/O    ;                 ; no       ; On           ;
+; 84       ; 118        ; 5        ; RESERVED_INPUT_WITH_WEAK_PULLUP                           ;        ;              ;         ; Row I/O    ;                 ; no       ; On           ;
+; 85       ; 119        ; 5        ; RESERVED_INPUT_WITH_WEAK_PULLUP                           ;        ;              ;         ; Row I/O    ;                 ; no       ; On           ;
+; 86       ; 120        ; 5        ; RESERVED_INPUT_WITH_WEAK_PULLUP                           ;        ;              ;         ; Row I/O    ;                 ; no       ; On           ;
+; 87       ; 121        ; 5        ; RESERVED_INPUT_WITH_WEAK_PULLUP                           ;        ;              ;         ; Row I/O    ;                 ; no       ; On           ;
+; 88       ; 125        ; 5        ; clk                                                       ; input  ; 2.5 V        ;         ; Row I/O    ; Y               ; no       ; Off          ;
+; 89       ; 126        ; 5        ; GND+                                                      ;        ;              ;         ; Row I/O    ;                 ; --       ; --           ;
+; 90       ; 127        ; 6        ; GND+                                                      ;        ;              ;         ; Row I/O    ;                 ; --       ; --           ;
+; 91       ; 128        ; 6        ; GND+                                                      ;        ;              ;         ; Row I/O    ;                 ; --       ; --           ;
+; 92       ; 129        ; 6        ; ^CONF_DONE                                                ;        ;              ;         ; --         ;                 ; --       ; --           ;
+; 93       ;            ; 6        ; VCCIO6                                                    ; power  ;              ; 2.5V    ; --         ;                 ; --       ; --           ;
+; 94       ; 130        ; 6        ; ^MSEL0                                                    ;        ;              ;         ; --         ;                 ; --       ; --           ;
+; 95       ;            ;          ; GND                                                       ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
+; 96       ; 131        ; 6        ; ^MSEL1                                                    ;        ;              ;         ; --         ;                 ; --       ; --           ;
+; 97       ; 132        ; 6        ; ^MSEL2                                                    ;        ;              ;         ; --         ;                 ; --       ; --           ;
+; 97       ; 133        ; 6        ; ^MSEL3                                                    ;        ;              ;         ; --         ;                 ; --       ; --           ;
+; 98       ; 136        ; 6        ; RESERVED_INPUT_WITH_WEAK_PULLUP                           ;        ;              ;         ; Row I/O    ;                 ; no       ; On           ;
+; 99       ; 137        ; 6        ; RESERVED_INPUT_WITH_WEAK_PULLUP                           ;        ;              ;         ; Row I/O    ;                 ; no       ; On           ;
+; 100      ; 138        ; 6        ; RESERVED_INPUT_WITH_WEAK_PULLUP                           ;        ;              ;         ; Row I/O    ;                 ; no       ; On           ;
+; 101      ; 139        ; 6        ; ~ALTERA_nCEO~ / RESERVED_OUTPUT_OPEN_DRAIN                ; output ; 2.5 V        ;         ; Row I/O    ; N               ; no       ; Off          ;
+; 102      ;            ;          ; VCCINT                                                    ; power  ;              ; 1.2V    ; --         ;                 ; --       ; --           ;
+; 103      ; 140        ; 6        ; RESERVED_INPUT_WITH_WEAK_PULLUP                           ;        ;              ;         ; Row I/O    ;                 ; no       ; On           ;
+; 104      ; 141        ; 6        ; RESERVED_INPUT_WITH_WEAK_PULLUP                           ;        ;              ;         ; Row I/O    ;                 ; no       ; On           ;
+; 105      ; 142        ; 6        ; RESERVED_INPUT_WITH_WEAK_PULLUP                           ;        ;              ;         ; Row I/O    ;                 ; --       ; --           ;
+; 106      ; 146        ; 6        ; RESERVED_INPUT_WITH_WEAK_PULLUP                           ;        ;              ;         ; Row I/O    ;                 ; no       ; On           ;
+; 107      ;            ; --       ; VCCA2                                                     ; power  ;              ; 2.5V    ; --         ;                 ; --       ; --           ;
+; 108      ;            ;          ; GNDA2                                                     ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
+; 109      ;            ;          ; VCCD_PLL2                                                 ; power  ;              ; 1.2V    ; --         ;                 ; --       ; --           ;
+; 110      ; 152        ; 7        ; RESERVED_INPUT_WITH_WEAK_PULLUP                           ;        ;              ;         ; Column I/O ;                 ; no       ; On           ;
+; 111      ; 154        ; 7        ; RESERVED_INPUT_WITH_WEAK_PULLUP                           ;        ;              ;         ; Column I/O ;                 ; no       ; On           ;
+; 112      ; 155        ; 7        ; RESERVED_INPUT_WITH_WEAK_PULLUP                           ;        ;              ;         ; Column I/O ;                 ; no       ; On           ;
+; 113      ; 156        ; 7        ; RESERVED_INPUT_WITH_WEAK_PULLUP                           ;        ;              ;         ; Column I/O ;                 ; no       ; On           ;
+; 114      ; 157        ; 7        ; RESERVED_INPUT_WITH_WEAK_PULLUP                           ;        ;              ;         ; Column I/O ;                 ; no       ; On           ;
+; 115      ; 158        ; 7        ; RESERVED_INPUT_WITH_WEAK_PULLUP                           ;        ;              ;         ; Column I/O ;                 ; no       ; On           ;
+; 116      ;            ;          ; VCCINT                                                    ; power  ;              ; 1.2V    ; --         ;                 ; --       ; --           ;
+; 117      ;            ; 7        ; VCCIO7                                                    ; power  ;              ; 2.5V    ; --         ;                 ; --       ; --           ;
+; 118      ;            ;          ; GND                                                       ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
+; 119      ; 163        ; 7        ; RESERVED_INPUT_WITH_WEAK_PULLUP                           ;        ;              ;         ; Column I/O ;                 ; --       ; --           ;
+; 120      ; 164        ; 7        ; RESERVED_INPUT_WITH_WEAK_PULLUP                           ;        ;              ;         ; Column I/O ;                 ; no       ; On           ;
+; 121      ; 165        ; 7        ; RESERVED_INPUT_WITH_WEAK_PULLUP                           ;        ;              ;         ; Column I/O ;                 ; no       ; On           ;
+; 122      ;            ; 7        ; VCCIO7                                                    ; power  ;              ; 2.5V    ; --         ;                 ; --       ; --           ;
+; 123      ;            ;          ; GND                                                       ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
+; 124      ; 173        ; 7        ; RESERVED_INPUT_WITH_WEAK_PULLUP                           ;        ;              ;         ; Column I/O ;                 ; no       ; On           ;
+; 125      ; 174        ; 7        ; RESERVED_INPUT_WITH_WEAK_PULLUP                           ;        ;              ;         ; Column I/O ;                 ; no       ; On           ;
+; 126      ; 175        ; 7        ; RESERVED_INPUT_WITH_WEAK_PULLUP                           ;        ;              ;         ; Column I/O ;                 ; no       ; On           ;
+; 127      ; 176        ; 7        ; RESERVED_INPUT_WITH_WEAK_PULLUP                           ;        ;              ;         ; Column I/O ;                 ; no       ; On           ;
+; 128      ; 177        ; 8        ; RESERVED_INPUT_WITH_WEAK_PULLUP                           ;        ;              ;         ; Column I/O ;                 ; no       ; On           ;
+; 129      ; 178        ; 8        ; RESERVED_INPUT_WITH_WEAK_PULLUP                           ;        ;              ;         ; Column I/O ;                 ; no       ; On           ;
+; 130      ;            ; 8        ; VCCIO8                                                    ; power  ;              ; 2.5V    ; --         ;                 ; --       ; --           ;
+; 131      ;            ;          ; GND                                                       ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
+; 132      ; 181        ; 8        ; RESERVED_INPUT_WITH_WEAK_PULLUP                           ;        ;              ;         ; Column I/O ;                 ; no       ; On           ;
+; 133      ; 182        ; 8        ; RESERVED_INPUT_WITH_WEAK_PULLUP                           ;        ;              ;         ; Column I/O ;                 ; no       ; On           ;
+; 134      ;            ;          ; VCCINT                                                    ; power  ;              ; 1.2V    ; --         ;                 ; --       ; --           ;
+; 135      ; 185        ; 8        ; RESERVED_INPUT_WITH_WEAK_PULLUP                           ;        ;              ;         ; Column I/O ;                 ; no       ; On           ;
+; 136      ; 187        ; 8        ; RESERVED_INPUT_WITH_WEAK_PULLUP                           ;        ;              ;         ; Column I/O ;                 ; --       ; --           ;
+; 137      ; 190        ; 8        ; RESERVED_INPUT_WITH_WEAK_PULLUP                           ;        ;              ;         ; Column I/O ;                 ; no       ; On           ;
+; 138      ; 191        ; 8        ; RESERVED_INPUT_WITH_WEAK_PULLUP                           ;        ;              ;         ; Column I/O ;                 ; no       ; On           ;
+; 139      ;            ; 8        ; VCCIO8                                                    ; power  ;              ; 2.5V    ; --         ;                 ; --       ; --           ;
+; 140      ;            ;          ; GND                                                       ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
+; 141      ; 195        ; 8        ; RESERVED_INPUT_WITH_WEAK_PULLUP                           ;        ;              ;         ; Column I/O ;                 ; no       ; On           ;
+; 142      ; 201        ; 8        ; RESERVED_INPUT_WITH_WEAK_PULLUP                           ;        ;              ;         ; Column I/O ;                 ; no       ; On           ;
+; 143      ; 202        ; 8        ; RESERVED_INPUT_WITH_WEAK_PULLUP                           ;        ;              ;         ; Column I/O ;                 ; no       ; On           ;
+; 144      ; 203        ; 8        ; RESERVED_INPUT_WITH_WEAK_PULLUP                           ;        ;              ;         ; Column I/O ;                 ; no       ; On           ;
+; EPAD     ;            ;          ; GND                                                       ;        ;              ;         ; --         ;                 ; --       ; --           ;
++----------+------------+----------+-----------------------------------------------------------+--------+--------------+---------+------------+-----------------+----------+--------------+
+Note: Pin directions (input, output or bidir) are based on device operating in user mode.
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Fitter Resource Utilization by Entity                                                                                                                                                                                                                                                                       ;
++--------------------------------+-------------+---------------------------+---------------+-------------+------+--------------+---------+-----------+------+--------------+--------------+-------------------+------------------+-------------------------------------------------------------+--------------+
+; Compilation Hierarchy Node     ; Logic Cells ; Dedicated Logic Registers ; I/O Registers ; Memory Bits ; M9Ks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Full Hierarchy Name                                         ; Library Name ;
++--------------------------------+-------------+---------------------------+---------------+-------------+------+--------------+---------+-----------+------+--------------+--------------+-------------------+------------------+-------------------------------------------------------------+--------------+
+; |spimoduletest                 ; 1388 (0)    ; 1341 (0)                  ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 11   ; 0            ; 47 (0)       ; 30 (0)            ; 1311 (0)         ; |spimoduletest                                              ; work         ;
+;    |paramcounter:sckmake|      ; 6 (6)       ; 1 (1)                     ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 5 (5)        ; 0 (0)             ; 1 (1)            ; |spimoduletest|paramcounter:sckmake                         ; work         ;
+;    |rain:createrain|           ; 480 (13)    ; 461 (12)                  ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 19 (1)       ; 10 (8)            ; 451 (3)          ; |spimoduletest|rain:createrain                              ; work         ;
+;       |paramcounter:slockmake| ; 19 (19)     ; 1 (1)                     ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 18 (18)      ; 0 (0)             ; 1 (1)            ; |spimoduletest|rain:createrain|paramcounter:slockmake       ; work         ;
+;       |paramspi:testled|       ; 449 (449)   ; 448 (448)                 ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 0 (0)        ; 2 (2)             ; 447 (447)        ; |spimoduletest|rain:createrain|paramspi:testled             ; work         ;
+;    |rain:rain2constructor|     ; 451 (15)    ; 429 (12)                  ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 22 (3)       ; 11 (11)           ; 418 (1)          ; |spimoduletest|rain:rain2constructor                        ; work         ;
+;       |paramcounter:slockmake| ; 20 (20)     ; 1 (1)                     ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 19 (19)      ; 0 (0)             ; 1 (1)            ; |spimoduletest|rain:rain2constructor|paramcounter:slockmake ; work         ;
+;       |paramspi:testled|       ; 416 (416)   ; 416 (416)                 ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 416 (416)        ; |spimoduletest|rain:rain2constructor|paramspi:testled       ; work         ;
+;    |rain:rain3constructor|     ; 451 (13)    ; 450 (12)                  ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 1 (1)        ; 9 (8)             ; 441 (3)          ; |spimoduletest|rain:rain3constructor                        ; work         ;
+;       |paramcounter:slockmake| ; 22 (22)     ; 22 (22)                   ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 22 (22)          ; |spimoduletest|rain:rain3constructor|paramcounter:slockmake ; work         ;
+;       |paramspi:testled|       ; 417 (417)   ; 416 (416)                 ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 0 (0)        ; 1 (1)             ; 416 (416)        ; |spimoduletest|rain:rain3constructor|paramspi:testled       ; work         ;
++--------------------------------+-------------+---------------------------+---------------+-------------+------+--------------+---------+-----------+------+--------------+--------------+-------------------+------------------+-------------------------------------------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++-------------------------------------------------------------------------------------------+
+; Delay Chain Summary                                                                       ;
++-----------+----------+---------------+---------------+-----------------------+-----+------+
+; Name      ; Pin Type ; Pad to Core 0 ; Pad to Core 1 ; Pad to Input Register ; TCO ; TCOE ;
++-----------+----------+---------------+---------------+-----------------------+-----+------+
+; sckout    ; Output   ; --            ; --            ; --                    ; --  ; --   ;
+; sckout2   ; Output   ; --            ; --            ; --                    ; --  ; --   ;
+; sckout3   ; Output   ; --            ; --            ; --                    ; --  ; --   ;
+; sckout4   ; Output   ; --            ; --            ; --                    ; --  ; --   ;
+; mosilarg  ; Output   ; --            ; --            ; --                    ; --  ; --   ;
+; mosimed   ; Output   ; --            ; --            ; --                    ; --  ; --   ;
+; mosismal  ; Output   ; --            ; --            ; --                    ; --  ; --   ;
+; mosirain1 ; Output   ; --            ; --            ; --                    ; --  ; --   ;
+; mosirain2 ; Output   ; --            ; --            ; --                    ; --  ; --   ;
+; mosirain3 ; Output   ; --            ; --            ; --                    ; --  ; --   ;
+; clk       ; Input    ; (0) 0 ps      ; --            ; --                    ; --  ; --   ;
++-----------+----------+---------------+---------------+-----------------------+-----+------+
+
+
++---------------------------------------------------+
+; Pad To Core Delay Chain Fanout                    ;
++---------------------+-------------------+---------+
+; Source Pin / Fanout ; Pad To Core Index ; Setting ;
++---------------------+-------------------+---------+
+; clk                 ;                   ;         ;
++---------------------+-------------------+---------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Control Signals                                                                                                                                                      ;
++----------------------------------------------------+----------------+---------+-------+--------+----------------------+------------------+---------------------------+
+; Name                                               ; Location       ; Fan-Out ; Usage ; Global ; Global Resource Used ; Global Line Name ; Enable Signal Source Name ;
++----------------------------------------------------+----------------+---------+-------+--------+----------------------+------------------+---------------------------+
+; clk                                                ; PIN_88         ; 25      ; Clock ; yes    ; Global Clock         ; GCLK8            ; --                        ;
+; paramcounter:sckmake|q[6]                          ; FF_X14_Y12_N11 ; 1280    ; Clock ; yes    ; Global Clock         ; GCLK3            ; --                        ;
+; rain:createrain|paramcounter:slockmake|q[19]       ; FF_X13_Y11_N19 ; 12      ; Clock ; yes    ; Global Clock         ; GCLK1            ; --                        ;
+; rain:rain2constructor|paramcounter:slockmake|q[20] ; FF_X21_Y11_N19 ; 12      ; Clock ; yes    ; Global Clock         ; GCLK4            ; --                        ;
+; rain:rain3constructor|paramcounter:slockmake|q[21] ; FF_X14_Y11_N21 ; 12      ; Clock ; yes    ; Global Clock         ; GCLK0            ; --                        ;
++----------------------------------------------------+----------------+---------+-------+--------+----------------------+------------------+---------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Global & Other Fast Signals                                                                                                                                                                ;
++----------------------------------------------------+----------------+---------+--------------------------------------+----------------------+------------------+---------------------------+
+; Name                                               ; Location       ; Fan-Out ; Fan-Out Using Intentional Clock Skew ; Global Resource Used ; Global Line Name ; Enable Signal Source Name ;
++----------------------------------------------------+----------------+---------+--------------------------------------+----------------------+------------------+---------------------------+
+; clk                                                ; PIN_88         ; 25      ; 0                                    ; Global Clock         ; GCLK8            ; --                        ;
+; paramcounter:sckmake|q[6]                          ; FF_X14_Y12_N11 ; 1280    ; 2                                    ; Global Clock         ; GCLK3            ; --                        ;
+; rain:createrain|paramcounter:slockmake|q[19]       ; FF_X13_Y11_N19 ; 12      ; 0                                    ; Global Clock         ; GCLK1            ; --                        ;
+; rain:rain2constructor|paramcounter:slockmake|q[20] ; FF_X21_Y11_N19 ; 12      ; 0                                    ; Global Clock         ; GCLK4            ; --                        ;
+; rain:rain3constructor|paramcounter:slockmake|q[21] ; FF_X14_Y11_N21 ; 12      ; 0                                    ; Global Clock         ; GCLK0            ; --                        ;
++----------------------------------------------------+----------------+---------+--------------------------------------+----------------------+------------------+---------------------------+
+
+
++----------------------------------------------------------------+
+; Non-Global High Fan-Out Signals                                ;
++------------------------------------------------------+---------+
+; Name                                                 ; Fan-Out ;
++------------------------------------------------------+---------+
+; rain:rain3constructor|paramcounter:slockmake|q[16]   ; 1283    ;
+; rain:rain3constructor|ledpattern[1]                  ; 28      ;
+; rain:rain3constructor|ledpattern[2]                  ; 28      ;
+; rain:rain3constructor|ledpattern[3]                  ; 28      ;
+; rain:rain3constructor|ledpattern[4]                  ; 28      ;
+; rain:rain3constructor|ledpattern[5]                  ; 28      ;
+; rain:rain3constructor|ledpattern[6]                  ; 28      ;
+; rain:rain3constructor|ledpattern[7]                  ; 28      ;
+; rain:rain3constructor|ledpattern[8]                  ; 28      ;
+; rain:rain3constructor|ledpattern[9]                  ; 28      ;
+; rain:rain3constructor|ledpattern[10]                 ; 28      ;
+; rain:rain2constructor|ledpattern[1]                  ; 28      ;
+; rain:rain2constructor|ledpattern[2]                  ; 28      ;
+; rain:rain2constructor|ledpattern[3]                  ; 28      ;
+; rain:rain2constructor|ledpattern[4]                  ; 28      ;
+; rain:rain2constructor|ledpattern[5]                  ; 28      ;
+; rain:rain2constructor|ledpattern[6]                  ; 28      ;
+; rain:rain2constructor|ledpattern[7]                  ; 28      ;
+; rain:rain2constructor|ledpattern[8]                  ; 28      ;
+; rain:rain2constructor|ledpattern[9]                  ; 28      ;
+; rain:rain2constructor|ledpattern[10]                 ; 28      ;
+; rain:createrain|ledpattern[1]                        ; 28      ;
+; rain:createrain|ledpattern[2]                        ; 28      ;
+; rain:createrain|ledpattern[3]                        ; 28      ;
+; rain:createrain|ledpattern[4]                        ; 28      ;
+; rain:createrain|ledpattern[5]                        ; 28      ;
+; rain:createrain|ledpattern[6]                        ; 28      ;
+; rain:createrain|ledpattern[7]                        ; 28      ;
+; rain:createrain|ledpattern[8]                        ; 28      ;
+; rain:createrain|ledpattern[9]                        ; 28      ;
+; rain:createrain|ledpattern[10]                       ; 28      ;
+; rain:rain3constructor|ledpattern[0]                  ; 28      ;
+; rain:rain2constructor|ledpattern[0]                  ; 28      ;
+; rain:createrain|ledpattern[0]                        ; 28      ;
+; rain:rain3constructor|ledpattern[11]                 ; 27      ;
+; rain:rain2constructor|ledpattern[11]                 ; 27      ;
+; rain:createrain|ledpattern[11]                       ; 27      ;
+; rain:rain3constructor|paramcounter:slockmake|q[0]    ; 5       ;
+; paramcounter:sckmake|q[6]                            ; 5       ;
+; rain:rain3constructor|paramcounter:slockmake|q[1]    ; 4       ;
+; rain:rain3constructor|paramcounter:slockmake|q[2]    ; 4       ;
+; rain:rain3constructor|paramcounter:slockmake|q[3]    ; 4       ;
+; rain:rain3constructor|paramcounter:slockmake|q[4]    ; 4       ;
+; rain:rain3constructor|paramcounter:slockmake|q[5]    ; 4       ;
+; rain:createrain|paramspi:testled|p[31]               ; 3       ;
+; rain:rain3constructor|paramcounter:slockmake|q[17]   ; 3       ;
+; rain:rain3constructor|paramcounter:slockmake|q[18]   ; 3       ;
+; rain:rain3constructor|paramcounter:slockmake|q[6]    ; 3       ;
+; rain:rain3constructor|paramcounter:slockmake|q[7]    ; 3       ;
+; rain:rain3constructor|paramcounter:slockmake|q[8]    ; 3       ;
+; rain:rain3constructor|paramcounter:slockmake|q[9]    ; 3       ;
+; rain:rain3constructor|paramcounter:slockmake|q[10]   ; 3       ;
+; rain:rain3constructor|paramcounter:slockmake|q[11]   ; 3       ;
+; rain:rain3constructor|paramcounter:slockmake|q[12]   ; 3       ;
+; rain:rain3constructor|paramcounter:slockmake|q[13]   ; 3       ;
+; rain:rain3constructor|paramcounter:slockmake|q[14]   ; 3       ;
+; rain:rain3constructor|paramcounter:slockmake|q[15]   ; 3       ;
+; rain:rain3constructor|paramcounter:slockmake|q[19]   ; 2       ;
+; rain:rain3constructor|paramcounter:slockmake|q[0]~63 ; 1       ;
+; rain:createrain|paramspi:testled|p~446               ; 1       ;
+; rain:createrain|paramspi:testled|p[0]                ; 1       ;
+; rain:createrain|paramspi:testled|p~445               ; 1       ;
+; rain:createrain|paramspi:testled|p[1]                ; 1       ;
+; rain:createrain|paramspi:testled|p~444               ; 1       ;
+; rain:createrain|paramspi:testled|p[2]                ; 1       ;
+; rain:createrain|paramspi:testled|p~443               ; 1       ;
+; rain:createrain|paramspi:testled|p[3]                ; 1       ;
+; rain:createrain|paramspi:testled|p~442               ; 1       ;
+; rain:createrain|paramspi:testled|p[4]                ; 1       ;
+; rain:createrain|paramspi:testled|p~441               ; 1       ;
+; rain:createrain|paramspi:testled|p[5]                ; 1       ;
+; rain:createrain|paramspi:testled|p~440               ; 1       ;
+; rain:createrain|paramspi:testled|p[6]                ; 1       ;
+; rain:createrain|paramspi:testled|p~439               ; 1       ;
+; rain:createrain|paramspi:testled|p[7]                ; 1       ;
+; rain:createrain|paramspi:testled|p~438               ; 1       ;
+; rain:createrain|paramspi:testled|p[8]                ; 1       ;
+; rain:createrain|paramspi:testled|p~437               ; 1       ;
+; rain:createrain|paramspi:testled|p[9]                ; 1       ;
+; rain:createrain|paramspi:testled|p~436               ; 1       ;
+; rain:createrain|paramspi:testled|p[10]               ; 1       ;
+; rain:createrain|paramspi:testled|p~435               ; 1       ;
+; rain:createrain|paramspi:testled|p[11]               ; 1       ;
+; rain:createrain|paramspi:testled|p~434               ; 1       ;
+; rain:createrain|paramspi:testled|p[12]               ; 1       ;
+; rain:createrain|paramspi:testled|p~433               ; 1       ;
+; rain:createrain|paramspi:testled|p[13]               ; 1       ;
+; rain:createrain|paramspi:testled|p~432               ; 1       ;
+; rain:createrain|paramspi:testled|p[14]               ; 1       ;
+; rain:createrain|paramspi:testled|p~431               ; 1       ;
+; rain:createrain|paramspi:testled|p[15]               ; 1       ;
+; rain:createrain|paramspi:testled|p~430               ; 1       ;
+; rain:createrain|paramspi:testled|p[16]               ; 1       ;
+; rain:createrain|paramspi:testled|p~429               ; 1       ;
+; rain:createrain|paramspi:testled|p[17]               ; 1       ;
+; rain:createrain|paramspi:testled|p~428               ; 1       ;
+; rain:createrain|paramspi:testled|p[18]               ; 1       ;
+; rain:createrain|paramspi:testled|p~427               ; 1       ;
+; rain:createrain|paramspi:testled|p[19]               ; 1       ;
+; rain:createrain|paramspi:testled|p~426               ; 1       ;
+; rain:createrain|paramspi:testled|p[20]               ; 1       ;
+; rain:createrain|paramspi:testled|p~425               ; 1       ;
+; rain:createrain|paramspi:testled|p[21]               ; 1       ;
+; rain:createrain|paramspi:testled|p~424               ; 1       ;
+; rain:createrain|paramspi:testled|p[22]               ; 1       ;
+; rain:createrain|paramspi:testled|p~423               ; 1       ;
+; rain:createrain|paramspi:testled|p[23]               ; 1       ;
+; rain:createrain|paramspi:testled|p~422               ; 1       ;
+; rain:createrain|paramspi:testled|p[24]               ; 1       ;
+; rain:createrain|paramspi:testled|p~421               ; 1       ;
+; rain:createrain|paramspi:testled|p[25]               ; 1       ;
+; rain:createrain|paramspi:testled|p~420               ; 1       ;
+; rain:createrain|paramspi:testled|p[26]               ; 1       ;
+; rain:createrain|paramspi:testled|p~419               ; 1       ;
+; rain:createrain|paramspi:testled|p[27]               ; 1       ;
+; rain:createrain|paramspi:testled|p~418               ; 1       ;
+; rain:createrain|paramspi:testled|p[28]               ; 1       ;
+; rain:createrain|paramspi:testled|p~417               ; 1       ;
+; rain:createrain|paramspi:testled|p[29]               ; 1       ;
+; rain:createrain|paramspi:testled|p~416               ; 1       ;
+; rain:createrain|paramspi:testled|p[30]               ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~415         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~415         ; 1       ;
+; rain:createrain|paramspi:testled|p~415               ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~414         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[32]         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~414         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[32]         ; 1       ;
+; rain:createrain|paramspi:testled|p~414               ; 1       ;
+; rain:createrain|paramspi:testled|p[32]               ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~413         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[33]         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~413         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[33]         ; 1       ;
+; rain:createrain|paramspi:testled|p~413               ; 1       ;
+; rain:createrain|paramspi:testled|p[33]               ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~412         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[34]         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~412         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[34]         ; 1       ;
+; rain:createrain|paramspi:testled|p~412               ; 1       ;
+; rain:createrain|paramspi:testled|p[34]               ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~411         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[35]         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~411         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[35]         ; 1       ;
+; rain:createrain|paramspi:testled|p~411               ; 1       ;
+; rain:createrain|paramspi:testled|p[35]               ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~410         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[36]         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~410         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[36]         ; 1       ;
+; rain:createrain|paramspi:testled|p~410               ; 1       ;
+; rain:createrain|paramspi:testled|p[36]               ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~409         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[37]         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~409         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[37]         ; 1       ;
+; rain:createrain|paramspi:testled|p~409               ; 1       ;
+; rain:createrain|paramspi:testled|p[37]               ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~408         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[38]         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~408         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[38]         ; 1       ;
+; rain:createrain|paramspi:testled|p~408               ; 1       ;
+; rain:createrain|paramspi:testled|p[38]               ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~407         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[39]         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~407         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[39]         ; 1       ;
+; rain:createrain|paramspi:testled|p~407               ; 1       ;
+; rain:createrain|paramspi:testled|p[39]               ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~406         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[40]         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~406         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[40]         ; 1       ;
+; rain:createrain|paramspi:testled|p~406               ; 1       ;
+; rain:createrain|paramspi:testled|p[40]               ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~405         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[41]         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~405         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[41]         ; 1       ;
+; rain:createrain|paramspi:testled|p~405               ; 1       ;
+; rain:createrain|paramspi:testled|p[41]               ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~404         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[42]         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~404         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[42]         ; 1       ;
+; rain:createrain|paramspi:testled|p~404               ; 1       ;
+; rain:createrain|paramspi:testled|p[42]               ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~403         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[43]         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~403         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[43]         ; 1       ;
+; rain:createrain|paramspi:testled|p~403               ; 1       ;
+; rain:createrain|paramspi:testled|p[43]               ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~402         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[44]         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~402         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[44]         ; 1       ;
+; rain:createrain|paramspi:testled|p~402               ; 1       ;
+; rain:createrain|paramspi:testled|p[44]               ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~401         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[45]         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~401         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[45]         ; 1       ;
+; rain:createrain|paramspi:testled|p~401               ; 1       ;
+; rain:createrain|paramspi:testled|p[45]               ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~400         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[46]         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~400         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[46]         ; 1       ;
+; rain:createrain|paramspi:testled|p~400               ; 1       ;
+; rain:createrain|paramspi:testled|p[46]               ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~399         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[47]         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~399         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[47]         ; 1       ;
+; rain:createrain|paramspi:testled|p~399               ; 1       ;
+; rain:createrain|paramspi:testled|p[47]               ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~398         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[48]         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~398         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[48]         ; 1       ;
+; rain:createrain|paramspi:testled|p~398               ; 1       ;
+; rain:createrain|paramspi:testled|p[48]               ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~397         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[49]         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~397         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[49]         ; 1       ;
+; rain:createrain|paramspi:testled|p~397               ; 1       ;
+; rain:createrain|paramspi:testled|p[49]               ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~396         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[50]         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~396         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[50]         ; 1       ;
+; rain:createrain|paramspi:testled|p~396               ; 1       ;
+; rain:createrain|paramspi:testled|p[50]               ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~395         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[51]         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~395         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[51]         ; 1       ;
+; rain:createrain|paramspi:testled|p~395               ; 1       ;
+; rain:createrain|paramspi:testled|p[51]               ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~394         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[52]         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~394         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[52]         ; 1       ;
+; rain:createrain|paramspi:testled|p~394               ; 1       ;
+; rain:createrain|paramspi:testled|p[52]               ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~393         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[53]         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~393         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[53]         ; 1       ;
+; rain:createrain|paramspi:testled|p~393               ; 1       ;
+; rain:createrain|paramspi:testled|p[53]               ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~392         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[54]         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~392         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[54]         ; 1       ;
+; rain:createrain|paramspi:testled|p~392               ; 1       ;
+; rain:createrain|paramspi:testled|p[54]               ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~391         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[55]         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~391         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[55]         ; 1       ;
+; rain:createrain|paramspi:testled|p~391               ; 1       ;
+; rain:createrain|paramspi:testled|p[55]               ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~390         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[56]         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~390         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[56]         ; 1       ;
+; rain:createrain|paramspi:testled|p~390               ; 1       ;
+; rain:createrain|paramspi:testled|p[56]               ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~389         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[57]         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~389         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[57]         ; 1       ;
+; rain:createrain|paramspi:testled|p~389               ; 1       ;
+; rain:createrain|paramspi:testled|p[57]               ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~388         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[58]         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~388         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[58]         ; 1       ;
+; rain:createrain|paramspi:testled|p~388               ; 1       ;
+; rain:createrain|paramspi:testled|p[58]               ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~387         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[59]         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~387         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[59]         ; 1       ;
+; rain:createrain|paramspi:testled|p~387               ; 1       ;
+; rain:createrain|paramspi:testled|p[59]               ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~386         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[60]         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~386         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[60]         ; 1       ;
+; rain:createrain|paramspi:testled|p~386               ; 1       ;
+; rain:createrain|paramspi:testled|p[60]               ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~385         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[61]         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~385         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[61]         ; 1       ;
+; rain:createrain|paramspi:testled|p~385               ; 1       ;
+; rain:createrain|paramspi:testled|p[61]               ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~384         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[62]         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~384         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[62]         ; 1       ;
+; rain:createrain|paramspi:testled|p~384               ; 1       ;
+; rain:createrain|paramspi:testled|p[62]               ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~383         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[63]         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~383         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[63]         ; 1       ;
+; rain:createrain|paramspi:testled|p~383               ; 1       ;
+; rain:createrain|paramspi:testled|p[63]               ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~382         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[64]         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~382         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[64]         ; 1       ;
+; rain:createrain|paramspi:testled|p~382               ; 1       ;
+; rain:createrain|paramspi:testled|p[64]               ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~381         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[65]         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~381         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[65]         ; 1       ;
+; rain:createrain|paramspi:testled|p~381               ; 1       ;
+; rain:createrain|paramspi:testled|p[65]               ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~380         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[66]         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~380         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[66]         ; 1       ;
+; rain:createrain|paramspi:testled|p~380               ; 1       ;
+; rain:createrain|paramspi:testled|p[66]               ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~379         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[67]         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~379         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[67]         ; 1       ;
+; rain:createrain|paramspi:testled|p~379               ; 1       ;
+; rain:createrain|paramspi:testled|p[67]               ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~378         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[68]         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~378         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[68]         ; 1       ;
+; rain:createrain|paramspi:testled|p~378               ; 1       ;
+; rain:createrain|paramspi:testled|p[68]               ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~377         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[69]         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~377         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[69]         ; 1       ;
+; rain:createrain|paramspi:testled|p~377               ; 1       ;
+; rain:createrain|paramspi:testled|p[69]               ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~376         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[70]         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~376         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[70]         ; 1       ;
+; rain:createrain|paramspi:testled|p~376               ; 1       ;
+; rain:createrain|paramspi:testled|p[70]               ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~375         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[71]         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~375         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[71]         ; 1       ;
+; rain:createrain|paramspi:testled|p~375               ; 1       ;
+; rain:createrain|paramspi:testled|p[71]               ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~374         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[72]         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~374         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[72]         ; 1       ;
+; rain:createrain|paramspi:testled|p~374               ; 1       ;
+; rain:createrain|paramspi:testled|p[72]               ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~373         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[73]         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~373         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[73]         ; 1       ;
+; rain:createrain|paramspi:testled|p~373               ; 1       ;
+; rain:createrain|paramspi:testled|p[73]               ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~372         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[74]         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~372         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[74]         ; 1       ;
+; rain:createrain|paramspi:testled|p~372               ; 1       ;
+; rain:createrain|paramspi:testled|p[74]               ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~371         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[75]         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~371         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[75]         ; 1       ;
+; rain:createrain|paramspi:testled|p~371               ; 1       ;
+; rain:createrain|paramspi:testled|p[75]               ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~370         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[76]         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~370         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[76]         ; 1       ;
+; rain:createrain|paramspi:testled|p~370               ; 1       ;
+; rain:createrain|paramspi:testled|p[76]               ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~369         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[77]         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~369         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[77]         ; 1       ;
+; rain:createrain|paramspi:testled|p~369               ; 1       ;
+; rain:createrain|paramspi:testled|p[77]               ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~368         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[78]         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~368         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[78]         ; 1       ;
+; rain:createrain|paramspi:testled|p~368               ; 1       ;
+; rain:createrain|paramspi:testled|p[78]               ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~367         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[79]         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~367         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[79]         ; 1       ;
+; rain:createrain|paramspi:testled|p~367               ; 1       ;
+; rain:createrain|paramspi:testled|p[79]               ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~366         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[80]         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~366         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[80]         ; 1       ;
+; rain:createrain|paramspi:testled|p~366               ; 1       ;
+; rain:createrain|paramspi:testled|p[80]               ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~365         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[81]         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~365         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[81]         ; 1       ;
+; rain:createrain|paramspi:testled|p~365               ; 1       ;
+; rain:createrain|paramspi:testled|p[81]               ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~364         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[82]         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~364         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[82]         ; 1       ;
+; rain:createrain|paramspi:testled|p~364               ; 1       ;
+; rain:createrain|paramspi:testled|p[82]               ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~363         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[83]         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~363         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[83]         ; 1       ;
+; rain:createrain|paramspi:testled|p~363               ; 1       ;
+; rain:createrain|paramspi:testled|p[83]               ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~362         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[84]         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~362         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[84]         ; 1       ;
+; rain:createrain|paramspi:testled|p~362               ; 1       ;
+; rain:createrain|paramspi:testled|p[84]               ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~361         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[85]         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~361         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[85]         ; 1       ;
+; rain:createrain|paramspi:testled|p~361               ; 1       ;
+; rain:createrain|paramspi:testled|p[85]               ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~360         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[86]         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~360         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[86]         ; 1       ;
+; rain:createrain|paramspi:testled|p~360               ; 1       ;
+; rain:createrain|paramspi:testled|p[86]               ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~359         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[87]         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~359         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[87]         ; 1       ;
+; rain:createrain|paramspi:testled|p~359               ; 1       ;
+; rain:createrain|paramspi:testled|p[87]               ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~358         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[88]         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~358         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[88]         ; 1       ;
+; rain:createrain|paramspi:testled|p~358               ; 1       ;
+; rain:createrain|paramspi:testled|p[88]               ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~357         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[89]         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~357         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[89]         ; 1       ;
+; rain:createrain|paramspi:testled|p~357               ; 1       ;
+; rain:createrain|paramspi:testled|p[89]               ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~356         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[90]         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~356         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[90]         ; 1       ;
+; rain:createrain|paramspi:testled|p~356               ; 1       ;
+; rain:createrain|paramspi:testled|p[90]               ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~355         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[91]         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~355         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[91]         ; 1       ;
+; rain:createrain|paramspi:testled|p~355               ; 1       ;
+; rain:createrain|paramspi:testled|p[91]               ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~354         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[92]         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~354         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[92]         ; 1       ;
+; rain:createrain|paramspi:testled|p~354               ; 1       ;
+; rain:createrain|paramspi:testled|p[92]               ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~353         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[93]         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~353         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[93]         ; 1       ;
+; rain:createrain|paramspi:testled|p~353               ; 1       ;
+; rain:createrain|paramspi:testled|p[93]               ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~352         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[94]         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~352         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[94]         ; 1       ;
+; rain:createrain|paramspi:testled|p~352               ; 1       ;
+; rain:createrain|paramspi:testled|p[94]               ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~351         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[95]         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~351         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[95]         ; 1       ;
+; rain:createrain|paramspi:testled|p~351               ; 1       ;
+; rain:createrain|paramspi:testled|p[95]               ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~350         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[96]         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~350         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[96]         ; 1       ;
+; rain:createrain|paramspi:testled|p~350               ; 1       ;
+; rain:createrain|paramspi:testled|p[96]               ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~349         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[97]         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~349         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[97]         ; 1       ;
+; rain:createrain|paramspi:testled|p~349               ; 1       ;
+; rain:createrain|paramspi:testled|p[97]               ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~348         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[98]         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~348         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[98]         ; 1       ;
+; rain:createrain|paramspi:testled|p~348               ; 1       ;
+; rain:createrain|paramspi:testled|p[98]               ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~347         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[99]         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~347         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[99]         ; 1       ;
+; rain:createrain|paramspi:testled|p~347               ; 1       ;
+; rain:createrain|paramspi:testled|p[99]               ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~346         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[100]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~346         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[100]        ; 1       ;
+; rain:createrain|paramspi:testled|p~346               ; 1       ;
+; rain:createrain|paramspi:testled|p[100]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~345         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[101]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~345         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[101]        ; 1       ;
+; rain:createrain|paramspi:testled|p~345               ; 1       ;
+; rain:createrain|paramspi:testled|p[101]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~344         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[102]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~344         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[102]        ; 1       ;
+; rain:createrain|paramspi:testled|p~344               ; 1       ;
+; rain:createrain|paramspi:testled|p[102]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~343         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[103]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~343         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[103]        ; 1       ;
+; rain:createrain|paramspi:testled|p~343               ; 1       ;
+; rain:createrain|paramspi:testled|p[103]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~342         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[104]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~342         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[104]        ; 1       ;
+; rain:createrain|paramspi:testled|p~342               ; 1       ;
+; rain:createrain|paramspi:testled|p[104]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~341         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[105]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~341         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[105]        ; 1       ;
+; rain:createrain|paramspi:testled|p~341               ; 1       ;
+; rain:createrain|paramspi:testled|p[105]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~340         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[106]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~340         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[106]        ; 1       ;
+; rain:createrain|paramspi:testled|p~340               ; 1       ;
+; rain:createrain|paramspi:testled|p[106]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~339         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[107]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~339         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[107]        ; 1       ;
+; rain:createrain|paramspi:testled|p~339               ; 1       ;
+; rain:createrain|paramspi:testled|p[107]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~338         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[108]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~338         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[108]        ; 1       ;
+; rain:createrain|paramspi:testled|p~338               ; 1       ;
+; rain:createrain|paramspi:testled|p[108]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~337         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[109]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~337         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[109]        ; 1       ;
+; rain:createrain|paramspi:testled|p~337               ; 1       ;
+; rain:createrain|paramspi:testled|p[109]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~336         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[110]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~336         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[110]        ; 1       ;
+; rain:createrain|paramspi:testled|p~336               ; 1       ;
+; rain:createrain|paramspi:testled|p[110]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~335         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[111]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~335         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[111]        ; 1       ;
+; rain:createrain|paramspi:testled|p~335               ; 1       ;
+; rain:createrain|paramspi:testled|p[111]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~334         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[112]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~334         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[112]        ; 1       ;
+; rain:createrain|paramspi:testled|p~334               ; 1       ;
+; rain:createrain|paramspi:testled|p[112]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~333         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[113]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~333         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[113]        ; 1       ;
+; rain:createrain|paramspi:testled|p~333               ; 1       ;
+; rain:createrain|paramspi:testled|p[113]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~332         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[114]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~332         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[114]        ; 1       ;
+; rain:createrain|paramspi:testled|p~332               ; 1       ;
+; rain:createrain|paramspi:testled|p[114]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~331         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[115]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~331         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[115]        ; 1       ;
+; rain:createrain|paramspi:testled|p~331               ; 1       ;
+; rain:createrain|paramspi:testled|p[115]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~330         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[116]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~330         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[116]        ; 1       ;
+; rain:createrain|paramspi:testled|p~330               ; 1       ;
+; rain:createrain|paramspi:testled|p[116]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~329         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[117]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~329         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[117]        ; 1       ;
+; rain:createrain|paramspi:testled|p~329               ; 1       ;
+; rain:createrain|paramspi:testled|p[117]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~328         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[118]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~328         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[118]        ; 1       ;
+; rain:createrain|paramspi:testled|p~328               ; 1       ;
+; rain:createrain|paramspi:testled|p[118]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~327         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[119]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~327         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[119]        ; 1       ;
+; rain:createrain|paramspi:testled|p~327               ; 1       ;
+; rain:createrain|paramspi:testled|p[119]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~326         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[120]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~326         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[120]        ; 1       ;
+; rain:createrain|paramspi:testled|p~326               ; 1       ;
+; rain:createrain|paramspi:testled|p[120]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~325         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[121]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~325         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[121]        ; 1       ;
+; rain:createrain|paramspi:testled|p~325               ; 1       ;
+; rain:createrain|paramspi:testled|p[121]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~324         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[122]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~324         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[122]        ; 1       ;
+; rain:createrain|paramspi:testled|p~324               ; 1       ;
+; rain:createrain|paramspi:testled|p[122]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~323         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[123]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~323         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[123]        ; 1       ;
+; rain:createrain|paramspi:testled|p~323               ; 1       ;
+; rain:createrain|paramspi:testled|p[123]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~322         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[124]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~322         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[124]        ; 1       ;
+; rain:createrain|paramspi:testled|p~322               ; 1       ;
+; rain:createrain|paramspi:testled|p[124]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~321         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[125]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~321         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[125]        ; 1       ;
+; rain:createrain|paramspi:testled|p~321               ; 1       ;
+; rain:createrain|paramspi:testled|p[125]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~320         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[126]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~320         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[126]        ; 1       ;
+; rain:createrain|paramspi:testled|p~320               ; 1       ;
+; rain:createrain|paramspi:testled|p[126]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~319         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[127]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~319         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[127]        ; 1       ;
+; rain:createrain|paramspi:testled|p~319               ; 1       ;
+; rain:createrain|paramspi:testled|p[127]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~318         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[128]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~318         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[128]        ; 1       ;
+; rain:createrain|paramspi:testled|p~318               ; 1       ;
+; rain:createrain|paramspi:testled|p[128]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~317         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[129]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~317         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[129]        ; 1       ;
+; rain:createrain|paramspi:testled|p~317               ; 1       ;
+; rain:createrain|paramspi:testled|p[129]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~316         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[130]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~316         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[130]        ; 1       ;
+; rain:createrain|paramspi:testled|p~316               ; 1       ;
+; rain:createrain|paramspi:testled|p[130]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~315         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[131]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~315         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[131]        ; 1       ;
+; rain:createrain|paramspi:testled|p~315               ; 1       ;
+; rain:createrain|paramspi:testled|p[131]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~314         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[132]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~314         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[132]        ; 1       ;
+; rain:createrain|paramspi:testled|p~314               ; 1       ;
+; rain:createrain|paramspi:testled|p[132]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~313         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[133]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~313         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[133]        ; 1       ;
+; rain:createrain|paramspi:testled|p~313               ; 1       ;
+; rain:createrain|paramspi:testled|p[133]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~312         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[134]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~312         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[134]        ; 1       ;
+; rain:createrain|paramspi:testled|p~312               ; 1       ;
+; rain:createrain|paramspi:testled|p[134]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~311         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[135]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~311         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[135]        ; 1       ;
+; rain:createrain|paramspi:testled|p~311               ; 1       ;
+; rain:createrain|paramspi:testled|p[135]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~310         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[136]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~310         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[136]        ; 1       ;
+; rain:createrain|paramspi:testled|p~310               ; 1       ;
+; rain:createrain|paramspi:testled|p[136]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~309         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[137]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~309         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[137]        ; 1       ;
+; rain:createrain|paramspi:testled|p~309               ; 1       ;
+; rain:createrain|paramspi:testled|p[137]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~308         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[138]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~308         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[138]        ; 1       ;
+; rain:createrain|paramspi:testled|p~308               ; 1       ;
+; rain:createrain|paramspi:testled|p[138]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~307         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[139]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~307         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[139]        ; 1       ;
+; rain:createrain|paramspi:testled|p~307               ; 1       ;
+; rain:createrain|paramspi:testled|p[139]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~306         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[140]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~306         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[140]        ; 1       ;
+; rain:createrain|paramspi:testled|p~306               ; 1       ;
+; rain:createrain|paramspi:testled|p[140]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~305         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[141]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~305         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[141]        ; 1       ;
+; rain:createrain|paramspi:testled|p~305               ; 1       ;
+; rain:createrain|paramspi:testled|p[141]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~304         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[142]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~304         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[142]        ; 1       ;
+; rain:createrain|paramspi:testled|p~304               ; 1       ;
+; rain:createrain|paramspi:testled|p[142]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~303         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[143]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~303         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[143]        ; 1       ;
+; rain:createrain|paramspi:testled|p~303               ; 1       ;
+; rain:createrain|paramspi:testled|p[143]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~302         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[144]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~302         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[144]        ; 1       ;
+; rain:createrain|paramspi:testled|p~302               ; 1       ;
+; rain:createrain|paramspi:testled|p[144]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~301         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[145]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~301         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[145]        ; 1       ;
+; rain:createrain|paramspi:testled|p~301               ; 1       ;
+; rain:createrain|paramspi:testled|p[145]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~300         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[146]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~300         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[146]        ; 1       ;
+; rain:createrain|paramspi:testled|p~300               ; 1       ;
+; rain:createrain|paramspi:testled|p[146]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~299         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[147]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~299         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[147]        ; 1       ;
+; rain:createrain|paramspi:testled|p~299               ; 1       ;
+; rain:createrain|paramspi:testled|p[147]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~298         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[148]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~298         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[148]        ; 1       ;
+; rain:createrain|paramspi:testled|p~298               ; 1       ;
+; rain:createrain|paramspi:testled|p[148]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~297         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[149]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~297         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[149]        ; 1       ;
+; rain:createrain|paramspi:testled|p~297               ; 1       ;
+; rain:createrain|paramspi:testled|p[149]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~296         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[150]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~296         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[150]        ; 1       ;
+; rain:createrain|paramspi:testled|p~296               ; 1       ;
+; rain:createrain|paramspi:testled|p[150]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~295         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[151]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~295         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[151]        ; 1       ;
+; rain:createrain|paramspi:testled|p~295               ; 1       ;
+; rain:createrain|paramspi:testled|p[151]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~294         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[152]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~294         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[152]        ; 1       ;
+; rain:createrain|paramspi:testled|p~294               ; 1       ;
+; rain:createrain|paramspi:testled|p[152]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~293         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[153]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~293         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[153]        ; 1       ;
+; rain:createrain|paramspi:testled|p~293               ; 1       ;
+; rain:createrain|paramspi:testled|p[153]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~292         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[154]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~292         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[154]        ; 1       ;
+; rain:createrain|paramspi:testled|p~292               ; 1       ;
+; rain:createrain|paramspi:testled|p[154]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~291         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[155]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~291         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[155]        ; 1       ;
+; rain:createrain|paramspi:testled|p~291               ; 1       ;
+; rain:createrain|paramspi:testled|p[155]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~290         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[156]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~290         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[156]        ; 1       ;
+; rain:createrain|paramspi:testled|p~290               ; 1       ;
+; rain:createrain|paramspi:testled|p[156]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~289         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[157]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~289         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[157]        ; 1       ;
+; rain:createrain|paramspi:testled|p~289               ; 1       ;
+; rain:createrain|paramspi:testled|p[157]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~288         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[158]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~288         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[158]        ; 1       ;
+; rain:createrain|paramspi:testled|p~288               ; 1       ;
+; rain:createrain|paramspi:testled|p[158]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~287         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[159]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~287         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[159]        ; 1       ;
+; rain:createrain|paramspi:testled|p~287               ; 1       ;
+; rain:createrain|paramspi:testled|p[159]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~286         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[160]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~286         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[160]        ; 1       ;
+; rain:createrain|paramspi:testled|p~286               ; 1       ;
+; rain:createrain|paramspi:testled|p[160]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~285         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[161]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~285         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[161]        ; 1       ;
+; rain:createrain|paramspi:testled|p~285               ; 1       ;
+; rain:createrain|paramspi:testled|p[161]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~284         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[162]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~284         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[162]        ; 1       ;
+; rain:createrain|paramspi:testled|p~284               ; 1       ;
+; rain:createrain|paramspi:testled|p[162]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~283         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[163]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~283         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[163]        ; 1       ;
+; rain:createrain|paramspi:testled|p~283               ; 1       ;
+; rain:createrain|paramspi:testled|p[163]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~282         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[164]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~282         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[164]        ; 1       ;
+; rain:createrain|paramspi:testled|p~282               ; 1       ;
+; rain:createrain|paramspi:testled|p[164]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~281         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[165]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~281         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[165]        ; 1       ;
+; rain:createrain|paramspi:testled|p~281               ; 1       ;
+; rain:createrain|paramspi:testled|p[165]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~280         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[166]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~280         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[166]        ; 1       ;
+; rain:createrain|paramspi:testled|p~280               ; 1       ;
+; rain:createrain|paramspi:testled|p[166]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~279         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[167]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~279         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[167]        ; 1       ;
+; rain:createrain|paramspi:testled|p~279               ; 1       ;
+; rain:createrain|paramspi:testled|p[167]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~278         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[168]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~278         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[168]        ; 1       ;
+; rain:createrain|paramspi:testled|p~278               ; 1       ;
+; rain:createrain|paramspi:testled|p[168]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~277         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[169]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~277         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[169]        ; 1       ;
+; rain:createrain|paramspi:testled|p~277               ; 1       ;
+; rain:createrain|paramspi:testled|p[169]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~276         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[170]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~276         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[170]        ; 1       ;
+; rain:createrain|paramspi:testled|p~276               ; 1       ;
+; rain:createrain|paramspi:testled|p[170]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~275         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[171]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~275         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[171]        ; 1       ;
+; rain:createrain|paramspi:testled|p~275               ; 1       ;
+; rain:createrain|paramspi:testled|p[171]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~274         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[172]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~274         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[172]        ; 1       ;
+; rain:createrain|paramspi:testled|p~274               ; 1       ;
+; rain:createrain|paramspi:testled|p[172]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~273         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[173]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~273         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[173]        ; 1       ;
+; rain:createrain|paramspi:testled|p~273               ; 1       ;
+; rain:createrain|paramspi:testled|p[173]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~272         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[174]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~272         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[174]        ; 1       ;
+; rain:createrain|paramspi:testled|p~272               ; 1       ;
+; rain:createrain|paramspi:testled|p[174]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~271         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[175]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~271         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[175]        ; 1       ;
+; rain:createrain|paramspi:testled|p~271               ; 1       ;
+; rain:createrain|paramspi:testled|p[175]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~270         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[176]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~270         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[176]        ; 1       ;
+; rain:createrain|paramspi:testled|p~270               ; 1       ;
+; rain:createrain|paramspi:testled|p[176]              ; 1       ;
+; rain:rain3constructor|paramspi:testled|p~269         ; 1       ;
+; rain:rain3constructor|paramspi:testled|p[177]        ; 1       ;
+; rain:rain2constructor|paramspi:testled|p~269         ; 1       ;
+; rain:rain2constructor|paramspi:testled|p[177]        ; 1       ;
+; rain:createrain|paramspi:testled|p~269               ; 1       ;
+; rain:createrain|paramspi:testled|p[177]              ; 1       ;
++------------------------------------------------------+---------+
+
+
++------------------------------------------------------+
+; Other Routing Usage Summary                          ;
++-----------------------------+------------------------+
+; Other Routing Resource Type ; Usage                  ;
++-----------------------------+------------------------+
+; Block interconnects         ; 797 / 32,401 ( 2 % )   ;
+; C16 interconnects           ; 1 / 1,326 ( < 1 % )    ;
+; C4 interconnects            ; 156 / 21,816 ( < 1 % ) ;
+; Direct links                ; 393 / 32,401 ( 1 % )   ;
+; Global clocks               ; 5 / 10 ( 50 % )        ;
+; Local interconnects         ; 866 / 10,320 ( 8 % )   ;
+; R24 interconnects           ; 7 / 1,289 ( < 1 % )    ;
+; R4 interconnects            ; 296 / 28,186 ( 1 % )   ;
++-----------------------------+------------------------+
+
+
++-----------------------------------------------------------------------------+
+; LAB Logic Elements                                                          ;
++---------------------------------------------+-------------------------------+
+; Number of Logic Elements  (Average = 12.85) ; Number of LABs  (Total = 108) ;
++---------------------------------------------+-------------------------------+
+; 1                                           ; 3                             ;
+; 2                                           ; 3                             ;
+; 3                                           ; 3                             ;
+; 4                                           ; 2                             ;
+; 5                                           ; 4                             ;
+; 6                                           ; 2                             ;
+; 7                                           ; 2                             ;
+; 8                                           ; 2                             ;
+; 9                                           ; 1                             ;
+; 10                                          ; 2                             ;
+; 11                                          ; 5                             ;
+; 12                                          ; 3                             ;
+; 13                                          ; 2                             ;
+; 14                                          ; 9                             ;
+; 15                                          ; 12                            ;
+; 16                                          ; 53                            ;
++---------------------------------------------+-------------------------------+
+
+
++--------------------------------------------------------------------+
+; LAB-wide Signals                                                   ;
++------------------------------------+-------------------------------+
+; LAB-wide Signals  (Average = 1.00) ; Number of LABs  (Total = 108) ;
++------------------------------------+-------------------------------+
+; 1 Clock                            ; 70                            ;
+; 2 Clocks                           ; 38                            ;
++------------------------------------+-------------------------------+
+
+
++------------------------------------------------------------------------------+
+; LAB Signals Sourced                                                          ;
++----------------------------------------------+-------------------------------+
+; Number of Signals Sourced  (Average = 24.87) ; Number of LABs  (Total = 108) ;
++----------------------------------------------+-------------------------------+
+; 0                                            ; 0                             ;
+; 1                                            ; 0                             ;
+; 2                                            ; 3                             ;
+; 3                                            ; 0                             ;
+; 4                                            ; 6                             ;
+; 5                                            ; 0                             ;
+; 6                                            ; 3                             ;
+; 7                                            ; 0                             ;
+; 8                                            ; 2                             ;
+; 9                                            ; 1                             ;
+; 10                                           ; 4                             ;
+; 11                                           ; 0                             ;
+; 12                                           ; 2                             ;
+; 13                                           ; 0                             ;
+; 14                                           ; 2                             ;
+; 15                                           ; 0                             ;
+; 16                                           ; 2                             ;
+; 17                                           ; 0                             ;
+; 18                                           ; 1                             ;
+; 19                                           ; 0                             ;
+; 20                                           ; 2                             ;
+; 21                                           ; 0                             ;
+; 22                                           ; 4                             ;
+; 23                                           ; 0                             ;
+; 24                                           ; 2                             ;
+; 25                                           ; 0                             ;
+; 26                                           ; 2                             ;
+; 27                                           ; 1                             ;
+; 28                                           ; 7                             ;
+; 29                                           ; 0                             ;
+; 30                                           ; 13                            ;
+; 31                                           ; 2                             ;
+; 32                                           ; 49                            ;
++----------------------------------------------+-------------------------------+
+
+
++---------------------------------------------------------------------------------+
+; LAB Signals Sourced Out                                                         ;
++-------------------------------------------------+-------------------------------+
+; Number of Signals Sourced Out  (Average = 4.69) ; Number of LABs  (Total = 108) ;
++-------------------------------------------------+-------------------------------+
+; 0                                               ; 0                             ;
+; 1                                               ; 15                            ;
+; 2                                               ; 9                             ;
+; 3                                               ; 9                             ;
+; 4                                               ; 15                            ;
+; 5                                               ; 16                            ;
+; 6                                               ; 19                            ;
+; 7                                               ; 15                            ;
+; 8                                               ; 5                             ;
+; 9                                               ; 3                             ;
+; 10                                              ; 1                             ;
+; 11                                              ; 1                             ;
++-------------------------------------------------+-------------------------------+
+
+
++-----------------------------------------------------------------------------+
+; LAB Distinct Inputs                                                         ;
++---------------------------------------------+-------------------------------+
+; Number of Distinct Inputs  (Average = 7.95) ; Number of LABs  (Total = 108) ;
++---------------------------------------------+-------------------------------+
+; 0                                           ; 0                             ;
+; 1                                           ; 0                             ;
+; 2                                           ; 3                             ;
+; 3                                           ; 6                             ;
+; 4                                           ; 12                            ;
+; 5                                           ; 3                             ;
+; 6                                           ; 5                             ;
+; 7                                           ; 15                            ;
+; 8                                           ; 14                            ;
+; 9                                           ; 19                            ;
+; 10                                          ; 11                            ;
+; 11                                          ; 7                             ;
+; 12                                          ; 6                             ;
+; 13                                          ; 4                             ;
+; 14                                          ; 2                             ;
+; 15                                          ; 1                             ;
++---------------------------------------------+-------------------------------+
+
+
++------------------------------------------+
+; I/O Rules Summary                        ;
++----------------------------------+-------+
+; I/O Rules Statistic              ; Total ;
++----------------------------------+-------+
+; Total I/O Rules                  ; 30    ;
+; Number of I/O Rules Passed       ; 12    ;
+; Number of I/O Rules Failed       ; 0     ;
+; Number of I/O Rules Unchecked    ; 0     ;
+; Number of I/O Rules Inapplicable ; 18    ;
++----------------------------------+-------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; I/O Rules Details                                                                                                                                                                                                                                                                                   ;
++--------------+-----------+-----------------------------------+------------------------------------------------------------------------------------------------------+----------+--------------------------------------------------------------------------+---------------------+-------------------+
+; Status       ; ID        ; Category                          ; Rule Description                                                                                     ; Severity ; Information                                                              ; Area                ; Extra Information ;
++--------------+-----------+-----------------------------------+------------------------------------------------------------------------------------------------------+----------+--------------------------------------------------------------------------+---------------------+-------------------+
+; Pass         ; IO_000001 ; Capacity Checks                   ; Number of pins in an I/O bank should not exceed the number of locations available.                   ; Critical ; 0 such failures found.                                                   ; I/O                 ;                   ;
+; Inapplicable ; IO_000002 ; Capacity Checks                   ; Number of clocks in an I/O bank should not exceed the number of clocks available.                    ; Critical ; No Global Signal assignments found.                                      ; I/O                 ;                   ;
+; Pass         ; IO_000003 ; Capacity Checks                   ; Number of pins in a Vrefgroup should not exceed the number of locations available.                   ; Critical ; 0 such failures found.                                                   ; I/O                 ;                   ;
+; Inapplicable ; IO_000004 ; Voltage Compatibility Checks      ; The I/O bank should support the requested VCCIO.                                                     ; Critical ; No IOBANK_VCCIO assignments found.                                       ; I/O                 ;                   ;
+; Inapplicable ; IO_000005 ; Voltage Compatibility Checks      ; The I/O bank should not have competing VREF values.                                                  ; Critical ; No VREF I/O Standard assignments found.                                  ; I/O                 ;                   ;
+; Pass         ; IO_000006 ; Voltage Compatibility Checks      ; The I/O bank should not have competing VCCIO values.                                                 ; Critical ; 0 such failures found.                                                   ; I/O                 ;                   ;
+; Pass         ; IO_000007 ; Valid Location Checks             ; Checks for unavailable locations.                                                                    ; Critical ; 0 such failures found.                                                   ; I/O                 ;                   ;
+; Inapplicable ; IO_000008 ; Valid Location Checks             ; Checks for reserved locations.                                                                       ; Critical ; No reserved LogicLock region found.                                      ; I/O                 ;                   ;
+; Pass         ; IO_000009 ; I/O Properties Checks for One I/O ; The location should support the requested I/O standard.                                              ; Critical ; 0 such failures found.                                                   ; I/O                 ;                   ;
+; Pass         ; IO_000010 ; I/O Properties Checks for One I/O ; The location should support the requested I/O direction.                                             ; Critical ; 0 such failures found.                                                   ; I/O                 ;                   ;
+; Inapplicable ; IO_000011 ; I/O Properties Checks for One I/O ; The location should support the requested Current Strength.                                          ; Critical ; No Current Strength assignments found.                                   ; I/O                 ;                   ;
+; Pass         ; IO_000012 ; I/O Properties Checks for One I/O ; The location should support the requested On Chip Termination value.                                 ; Critical ; 0 such failures found.                                                   ; I/O                 ;                   ;
+; Inapplicable ; IO_000013 ; I/O Properties Checks for One I/O ; The location should support the requested Bus Hold value.                                            ; Critical ; No Enable Bus-Hold Circuitry assignments found.                          ; I/O                 ;                   ;
+; Inapplicable ; IO_000014 ; I/O Properties Checks for One I/O ; The location should support the requested Weak Pull Up value.                                        ; Critical ; No Weak Pull-Up Resistor assignments found.                              ; I/O                 ;                   ;
+; Pass         ; IO_000015 ; I/O Properties Checks for One I/O ; The location should support the requested PCI Clamp Diode.                                           ; Critical ; 0 such failures found.                                                   ; I/O                 ;                   ;
+; Inapplicable ; IO_000018 ; I/O Properties Checks for One I/O ; The I/O standard should support the requested Current Strength.                                      ; Critical ; No Current Strength assignments found.                                   ; I/O                 ;                   ;
+; Pass         ; IO_000019 ; I/O Properties Checks for One I/O ; The I/O standard should support the requested On Chip Termination value.                             ; Critical ; 0 such failures found.                                                   ; I/O                 ;                   ;
+; Pass         ; IO_000020 ; I/O Properties Checks for One I/O ; The I/O standard should support the requested PCI Clamp Diode.                                       ; Critical ; 0 such failures found.                                                   ; I/O                 ;                   ;
+; Inapplicable ; IO_000021 ; I/O Properties Checks for One I/O ; The I/O standard should support the requested Weak Pull Up value.                                    ; Critical ; No Weak Pull-Up Resistor assignments found.                              ; I/O                 ;                   ;
+; Inapplicable ; IO_000022 ; I/O Properties Checks for One I/O ; The I/O standard should support the requested Bus Hold value.                                        ; Critical ; No Enable Bus-Hold Circuitry assignments found.                          ; I/O                 ;                   ;
+; Inapplicable ; IO_000023 ; I/O Properties Checks for One I/O ; The I/O standard should support the Open Drain value.                                                ; Critical ; No open drain assignments found.                                         ; I/O                 ;                   ;
+; Pass         ; IO_000024 ; I/O Properties Checks for One I/O ; The I/O direction should support the On Chip Termination value.                                      ; Critical ; 0 such failures found.                                                   ; I/O                 ;                   ;
+; Inapplicable ; IO_000026 ; I/O Properties Checks for One I/O ; On Chip Termination and Current Strength should not be used at the same time.                        ; Critical ; No Current Strength assignments found.                                   ; I/O                 ;                   ;
+; Inapplicable ; IO_000027 ; I/O Properties Checks for One I/O ; Weak Pull Up and Bus Hold should not be used at the same time.                                       ; Critical ; No Enable Bus-Hold Circuitry or Weak Pull-Up Resistor assignments found. ; I/O                 ;                   ;
+; Inapplicable ; IO_000045 ; I/O Properties Checks for One I/O ; The I/O standard should support the requested Slew Rate value.                                       ; Critical ; No Slew Rate assignments found.                                          ; I/O                 ;                   ;
+; Inapplicable ; IO_000046 ; I/O Properties Checks for One I/O ; The location should support the requested Slew Rate value.                                           ; Critical ; No Slew Rate assignments found.                                          ; I/O                 ;                   ;
+; Inapplicable ; IO_000047 ; I/O Properties Checks for One I/O ; On Chip Termination and Slew Rate should not be used at the same time.                               ; Critical ; No Slew Rate assignments found.                                          ; I/O                 ;                   ;
+; Pass         ; IO_000033 ; Electromigration Checks           ; Current density for consecutive I/Os should not exceed 240mA for row I/Os and 240mA for column I/Os. ; Critical ; 0 such failures found.                                                   ; I/O                 ;                   ;
+; Inapplicable ; IO_000034 ; SI Related Distance Checks        ; Single-ended outputs should be 5 LAB row(s) away from a differential I/O.                            ; High     ; No Differential I/O Standard assignments found.                          ; I/O                 ;                   ;
+; Inapplicable ; IO_000042 ; SI Related SSO Limit Checks       ; No more than 20 outputs are allowed in a VREF group when VREF is being read from.                    ; High     ; No VREF I/O Standard assignments found.                                  ; I/O                 ;                   ;
+; ----         ; ----      ; Disclaimer                        ; OCT rules are checked but not reported.                                                              ; None     ; ----                                                                     ; On Chip Termination ;                   ;
++--------------+-----------+-----------------------------------+------------------------------------------------------------------------------------------------------+----------+--------------------------------------------------------------------------+---------------------+-------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; I/O Rules Matrix                                                                                                                                                                                                                                                                                                                                                                                                                                                ;
++--------------------+-----------+--------------+-----------+--------------+--------------+-----------+-----------+--------------+-----------+-----------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+-----------+--------------+--------------+
+; Pin/Rules          ; IO_000001 ; IO_000002    ; IO_000003 ; IO_000004    ; IO_000005    ; IO_000006 ; IO_000007 ; IO_000008    ; IO_000009 ; IO_000010 ; IO_000011    ; IO_000012    ; IO_000013    ; IO_000014    ; IO_000015    ; IO_000018    ; IO_000019    ; IO_000020    ; IO_000021    ; IO_000022    ; IO_000023    ; IO_000024    ; IO_000026    ; IO_000027    ; IO_000045    ; IO_000046    ; IO_000047    ; IO_000033 ; IO_000034    ; IO_000042    ;
++--------------------+-----------+--------------+-----------+--------------+--------------+-----------+-----------+--------------+-----------+-----------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+-----------+--------------+--------------+
+; Total Pass         ; 11        ; 0            ; 11        ; 0            ; 0            ; 11        ; 11        ; 0            ; 11        ; 11        ; 0            ; 10           ; 0            ; 0            ; 1            ; 0            ; 10           ; 1            ; 0            ; 0            ; 0            ; 10           ; 0            ; 0            ; 0            ; 0            ; 0            ; 11        ; 0            ; 0            ;
+; Total Unchecked    ; 0         ; 0            ; 0         ; 0            ; 0            ; 0         ; 0         ; 0            ; 0         ; 0         ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0         ; 0            ; 0            ;
+; Total Inapplicable ; 0         ; 11           ; 0         ; 11           ; 11           ; 0         ; 0         ; 11           ; 0         ; 0         ; 11           ; 1            ; 11           ; 11           ; 10           ; 11           ; 1            ; 10           ; 11           ; 11           ; 11           ; 1            ; 11           ; 11           ; 11           ; 11           ; 11           ; 0         ; 11           ; 11           ;
+; Total Fail         ; 0         ; 0            ; 0         ; 0            ; 0            ; 0         ; 0         ; 0            ; 0         ; 0         ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0         ; 0            ; 0            ;
+; sckout             ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ;
+; sckout2            ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ;
+; sckout3            ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ;
+; sckout4            ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ;
+; mosilarg           ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ;
+; mosimed            ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ;
+; mosismal           ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ;
+; mosirain1          ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ;
+; mosirain2          ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ;
+; mosirain3          ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ;
+; clk                ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ;
++--------------------+-----------+--------------+-----------+--------------+--------------+-----------+-----------+--------------+-----------+-----------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+-----------+--------------+--------------+
+
+
++---------------------------------------------------------------------------------------------+
+; Fitter Device Options                                                                       ;
++------------------------------------------------------------------+--------------------------+
+; Option                                                           ; Setting                  ;
++------------------------------------------------------------------+--------------------------+
+; Enable user-supplied start-up clock (CLKUSR)                     ; Off                      ;
+; Enable device-wide reset (DEV_CLRn)                              ; Off                      ;
+; Enable device-wide output enable (DEV_OE)                        ; Off                      ;
+; Enable INIT_DONE output                                          ; Off                      ;
+; Configuration scheme                                             ; Active Serial            ;
+; Error detection CRC                                              ; Off                      ;
+; Enable open drain on CRC_ERROR pin                               ; Off                      ;
+; Enable input tri-state on active configuration pins in user mode ; Off                      ;
+; Configuration Voltage Level                                      ; Auto                     ;
+; Force Configuration Voltage Level                                ; Off                      ;
+; nCEO                                                             ; As output driving ground ;
+; Data[0]                                                          ; As input tri-stated      ;
+; Data[1]/ASDO                                                     ; As input tri-stated      ;
+; Data[7..2]                                                       ; Unreserved               ;
+; FLASH_nCE/nCSO                                                   ; As input tri-stated      ;
+; Other Active Parallel pins                                       ; Unreserved               ;
+; DCLK                                                             ; As output driving ground ;
+; Base pin-out file on sameframe device                            ; Off                      ;
++------------------------------------------------------------------+--------------------------+
+
+
++------------------------------------+
+; Operating Settings and Conditions  ;
++---------------------------+--------+
+; Setting                   ; Value  ;
++---------------------------+--------+
+; Nominal Core Voltage      ; 1.20 V ;
+; Low Junction Temperature  ; 0 °C   ;
+; High Junction Temperature ; 85 °C  ;
++---------------------------+--------+
+
+
++----------------------------------------------------------------------------------------------+
+; Estimated Delay Added for Hold Timing Summary                                                ;
++----------------------------------------------+---------------------------+-------------------+
+; Source Clock(s)                              ; Destination Clock(s)      ; Delay Added in ns ;
++----------------------------------------------+---------------------------+-------------------+
+; rain:createrain|paramcounter:slockmake|q[19] ; paramcounter:sckmake|q[6] ; 41.7              ;
+; clk                                          ; paramcounter:sckmake|q[6] ; 27.5              ;
+; clk                                          ; clk                       ; 10.3              ;
++----------------------------------------------+---------------------------+-------------------+
+Note: For more information on problematic transfers, consider running the Fitter again with the Optimize hold timing option (Settings Menu) turned off.
+This will disable optimization of problematic paths and expose them for further analysis using either the TimeQuest Timing Analyzer or the Classic Timing Analyzer.
+
+
++-----------------------------------------------------------------------------------------------------------------------------+
+; Estimated Delay Added for Hold Timing Details                                                                               ;
++----------------------------------------------------+----------------------------------------------------+-------------------+
+; Source Register                                    ; Destination Register                               ; Delay Added in ns ;
++----------------------------------------------------+----------------------------------------------------+-------------------+
+; rain:rain3constructor|paramcounter:slockmake|q[21] ; rain:rain3constructor|paramcounter:slockmake|q[21] ; 2.576             ;
+; rain:createrain|paramcounter:slockmake|q[19]       ; rain:createrain|paramcounter:slockmake|q[19]       ; 2.576             ;
+; paramcounter:sckmake|q[6]                          ; paramcounter:sckmake|q[6]                          ; 2.570             ;
+; rain:rain2constructor|paramcounter:slockmake|q[20] ; rain:rain2constructor|paramcounter:slockmake|q[20] ; 2.552             ;
+; rain:rain3constructor|paramcounter:slockmake|q[16] ; rain:rain3constructor|paramspi:testled|p[93]       ; 0.342             ;
+; rain:createrain|ledpattern[0]                      ; rain:createrain|paramspi:testled|p[384]            ; 0.237             ;
+; rain:createrain|ledpattern[1]                      ; rain:createrain|paramspi:testled|p[352]            ; 0.237             ;
+; rain:createrain|ledpattern[2]                      ; rain:createrain|paramspi:testled|p[321]            ; 0.237             ;
+; rain:createrain|ledpattern[3]                      ; rain:createrain|paramspi:testled|p[288]            ; 0.237             ;
+; rain:createrain|ledpattern[4]                      ; rain:createrain|paramspi:testled|p[260]            ; 0.237             ;
+; rain:createrain|ledpattern[5]                      ; rain:createrain|paramspi:testled|p[225]            ; 0.237             ;
+; rain:createrain|ledpattern[6]                      ; rain:createrain|paramspi:testled|p[192]            ; 0.237             ;
+; rain:createrain|ledpattern[7]                      ; rain:createrain|paramspi:testled|p[160]            ; 0.237             ;
+; rain:createrain|ledpattern[9]                      ; rain:createrain|paramspi:testled|p[96]             ; 0.237             ;
+; rain:createrain|ledpattern[11]                     ; rain:createrain|paramspi:testled|p[34]             ; 0.237             ;
+; rain:createrain|ledpattern[8]                      ; rain:createrain|paramspi:testled|p[128]            ; 0.236             ;
+; rain:createrain|ledpattern[10]                     ; rain:createrain|paramspi:testled|p[64]             ; 0.236             ;
++----------------------------------------------------+----------------------------------------------------+-------------------+
+Note: This table only shows the top 17 path(s) that have the largest delay added for hold.
+
+
++-----------------+
+; Fitter Messages ;
++-----------------+
+Warning (20028): Parallel compilation is not licensed and has been disabled
+Info (119006): Selected device EP4CE6E22C8 for design "spimoduletest"
+Info (21077): Core supply voltage is 1.2V
+Info (21077): Low junction temperature is 0 degrees C
+Info (21077): High junction temperature is 85 degrees C
+Info (171003): Fitter is performing an Auto Fit compilation, which may decrease Fitter effort to reduce compilation time
+Warning (292013): Feature LogicLock is only available with a valid subscription license. You can purchase a software subscription to gain full access to this feature.
+Info (176444): Device migration not selected. If you intend to use device migration later, you may need to change the pin assignments as they may be incompatible with other devices
+    Info (176445): Device EP4CE10E22C8 is compatible
+    Info (176445): Device EP4CE15E22C8 is compatible
+    Info (176445): Device EP4CE22E22C8 is compatible
+Info (169124): Fitter converted 5 user pins into dedicated programming pins
+    Info (169125): Pin ~ALTERA_ASDO_DATA1~ is reserved at location 6
+    Info (169125): Pin ~ALTERA_FLASH_nCE_nCSO~ is reserved at location 8
+    Info (169125): Pin ~ALTERA_DCLK~ is reserved at location 12
+    Info (169125): Pin ~ALTERA_DATA0~ is reserved at location 13
+    Info (169125): Pin ~ALTERA_nCEO~ is reserved at location 101
+Warning (15714): Some pins have incomplete I/O assignments. Refer to the I/O Assignment Warnings report for details
+Critical Warning (332012): Synopsys Design Constraints File file not found: 'spimoduletest.sdc'. A Synopsys Design Constraints File is required by the TimeQuest Timing Analyzer to get proper timing constraints. Without it, the Compiler will not properly optimize the design.
+Info (332144): No user constrained base clocks found in the design
+Info (332143): No user constrained clock uncertainty found in the design. Calling "derive_clock_uncertainty"
+Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in TimeQuest to see clock uncertainties.
+Info (332130): Timing requirements not specified -- quality metrics such as performance may be sacrificed to reduce compilation time.
+Info (176353): Automatically promoted node clk~input (placed in PIN 88 (CLK7, DIFFCLK_3n))
+    Info (176355): Automatically promoted destinations to use location or clock signal Global Clock CLKCTRL_G8
+Info (176353): Automatically promoted node paramcounter:sckmake|q[6] 
+    Info (176355): Automatically promoted destinations to use location or clock signal Global Clock
+    Info (176356): Following destination nodes may be non-global or may not use global or regional clocks
+        Info (176357): Destination node paramcounter:sckmake|q[6]~11
+        Info (176357): Destination node sckout~output
+        Info (176357): Destination node sckout2~output
+        Info (176357): Destination node sckout3~output
+        Info (176357): Destination node sckout4~output
+Info (176353): Automatically promoted node rain:createrain|paramcounter:slockmake|q[19] 
+    Info (176355): Automatically promoted destinations to use location or clock signal Global Clock
+    Info (176356): Following destination nodes may be non-global or may not use global or regional clocks
+        Info (176357): Destination node rain:createrain|paramcounter:slockmake|q[19]~37
+Info (176353): Automatically promoted node rain:rain2constructor|paramcounter:slockmake|q[20] 
+    Info (176355): Automatically promoted destinations to use location or clock signal Global Clock
+    Info (176356): Following destination nodes may be non-global or may not use global or regional clocks
+        Info (176357): Destination node rain:rain2constructor|paramcounter:slockmake|q[20]~39
+Info (176353): Automatically promoted node rain:rain3constructor|paramcounter:slockmake|q[21] 
+    Info (176355): Automatically promoted destinations to use location or clock signal Global Clock
+    Info (176356): Following destination nodes may be non-global or may not use global or regional clocks
+        Info (176357): Destination node rain:rain3constructor|paramcounter:slockmake|q[21]~61
+Info (176233): Starting register packing
+Info (176235): Finished register packing
+    Extra Info (176219): No registers were packed into other blocks
+Info (171121): Fitter preparation operations ending: elapsed time is 00:00:01
+Info (170189): Fitter placement preparation operations beginning
+Info (170190): Fitter placement preparation operations ending: elapsed time is 00:00:01
+Info (170191): Fitter placement operations beginning
+Info (170137): Fitter placement was successful
+Info (170192): Fitter placement operations ending: elapsed time is 00:00:01
+Info (170193): Fitter routing operations beginning
+Info (170195): Router estimated average interconnect usage is 0% of the available device resources
+    Info (170196): Router estimated peak interconnect usage is 2% of the available device resources in the region that extends from location X11_Y0 to location X22_Y11
+Info (170194): Fitter routing operations ending: elapsed time is 00:00:03
+Info (170199): The Fitter performed an Auto Fit compilation.  Optimizations were skipped to reduce compilation time.
+    Info (170201): Optimizations that may affect the design's routability were skipped
+Info (11888): Total time spent on timing analysis during the Fitter is 1.08 seconds.
+Info (334003): Started post-fitting delay annotation
+Info (334004): Delay annotation completed successfully
+Info (334003): Started post-fitting delay annotation
+Info (334004): Delay annotation completed successfully
+Info (11218): Fitter post-fit operations ending: elapsed time is 00:00:01
+Info (144001): Generated suppressed messages file F:/altera/13.0sp1/FinalProject4/output_files/spimoduletest.fit.smsg
+Info: Quartus II 32-bit Fitter was successful. 0 errors, 4 warnings
+    Info: Peak virtual memory: 597 megabytes
+    Info: Processing ended: Thu Nov 30 20:34:40 2017
+    Info: Elapsed time: 00:00:10
+    Info: Total CPU time (on all processors): 00:00:09
+
+
++----------------------------+
+; Fitter Suppressed Messages ;
++----------------------------+
+The suppressed messages can be found in F:/altera/13.0sp1/FinalProject4/output_files/spimoduletest.fit.smsg.
+
+
