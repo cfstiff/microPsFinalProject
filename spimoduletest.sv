@@ -43,7 +43,7 @@ logic [29:0]slockcount;
 paramcounter #(30) slockmake(clk, 1'b0, slockcount);
 logic slock;
 
-assign slock = slockcount[speed+19];
+assign slock = slockcount[22-speed];
 
 // raininstance is the dataout sent to the led strand, ledpattern is the on/off pattern (12 bits, 1 on, 0 off)
 logic [0:11]ledpattern;
@@ -130,7 +130,7 @@ endmodule
 
 module fakespi(input clk,
 					output [0:16]spiout);
-assign spiout = 16'b01_11111_1_0_00_1_00_11;
+assign spiout = 16'b10_11000_0__00000000; //16'b01_11111_1__0_01_1_00_11; 
 endmodule
 						
 // create the SPI output to turn a led with numleds a singled color as input
@@ -210,46 +210,56 @@ logic [8:0]rblue;
 logic [8:0]rgreen;
 
 logic [5:0]globalbrightness;
-assign globalbrightness = spiout[6:2];
+assign globalbrightness = spiout[13:9];
 
-logic [1:0]speed;
-assign speed = spiout[10:9];
+logic [1:0]speed, lightning;
+assign speed = spiout[6:5];
+assign lightning = spiout[3:2];
 
-logic sunrise,sunset;
-assign sunrise = spiout[0];
-assign sunset = spiout[1];
+logic sunrise,sunset, cloud, rainsnow;
+assign sunrise = spiout[15];
+assign sunset = spiout[14];
+assign cloud = spiout[7];
+//rain if 1, snow if 0
+assign rainsnow = spiout[4];
 
-always_comb
-	begin
-		if(sunrise||sunset)
-			begin
-				lred = 8'h42;
-				lblue = 8'h7A;
-				lgreen = 8'hF4;
-			end
-		//if(speed != 0)
-			// if 1, rain, if 0, snow
-			//if(spiout[11])
-					
-	end
-
-
+always_ff @(posedge sck)
+begin
+	if(sunrise||sunset)
+		begin
+			 lred = 8'hFF;
+			 lblue = 8'h00;
+			 lgreen = 8'h00;
+		end
+	if(speed != 0 && rainsnow)
+		begin
+			rred = 8'hFF;
+			rblue = 8'hFF;
+			rgreen = 8'hFF;
+		end
+	if(speed != 0 && !rainsnow)
+		begin
+			rred = 8'h00;
+			rblue = 8'hFF;
+			rgreen = 8'h00;
+		end
+end
 
 // assigns lanterns different dawn colors
 // generate outputs
 logic [largb-1:0]datainlarg;
-valueGenOneColor #(larglen) orangetest(5'b11000,8'h42,8'h7A,8'hF4,datainlarg);
+valueGenOneColor #(larglen) orangetest(globalbrightness,lblue,lgreen,lred,datainlarg);
 logic [medb-1:0]datainmed;
-valueGenOneColor #(medlen) bluetest(5'b11000,8'h00,8'h50,8'hFF,datainmed);
+valueGenOneColor #(medlen) bluetest(globalbrightness,lblue,lgreen,lred,datainmed);
 logic [smalb-1:0]datainsmal;
-valueGenOneColor #(smallen) pinktest(5'b11000,8'h00,8'h64,8'hDB,datainsmal);
+valueGenOneColor #(smallen) pinktest(globalbrightness,lblue,lgreen,lred,datainsmal);
 // do the spi
 paramspi #(largb) bigstrand(clk,sck,mosilarg,datainlarg);
 paramspi #(medb) medstrand(clk,sck,mosimed,datainmed);
 paramspi #(smalb) smalstrand(clk,sck,mosismal,datainsmal);
 
 // controls three rain strands
-rain createrain(clk,sck, 5'b11000,8'hFF,8'hFF,8'hFF,speed,mosirain1);
-rain rain2constructor(clk,sck, 5'b11000,8'hFF,8'hFF,8'hFF,speed,mosirain2);
-rain rain3constructor(clk,sck,5'b11000,8'hFF,8'hFF,8'hFF,speed,mosirain3);
+//rain createrain(clk,sck, globalbrightness,rblue,rgreen,rred,2'b10,mosirain1);
+//rain rain2constructor(clk,sck, globalbrightness,rblue,rgreen,rred,2'b01,mosirain2);
+//rain rain3constructor(clk,sck, globalbrightness,rblue,rgreen,rred,speed,mosirain3);
 endmodule
