@@ -86,6 +86,9 @@ def setWeatherBits(weatherDictionary):
 	# Get the time
 	currentTime = getCurrentTime(weatherDictionary["coord"])
 
+	#########################
+	#  SUNSET/SUNRISE/TIME  #
+	#########################
 
 	# Get the time for sunrise and sunset
 	sunrise =  datetime.fromtimestamp(
@@ -97,43 +100,51 @@ def setWeatherBits(weatherDictionary):
 	timeToSunrise = abs(currentTime - sunrise)
 	timeToSunset = abs(currentTime - sunset)
 
-	# Create a time delta of 30 minutes, and 23 hours and 30 minutes
+	# Create a time delta of 30 minutes
 	previousTimeDelta = timedelta(minutes = 30)
-	futureTimeDelta = timedelta(hours = 23, minutes = 30)
+
 
 
 	# Check if we are within 30 minutes of the sunrise
-	if currentTime >= sunrise - previousTimeDelta or currentTime <= sunrise - futureTimeDelta:
+	if currentTime >= sunrise - previousTimeDelta and currentTime <= sunrise - previousTimeDelta:
 		# If we are, set sunrise bits to 1
 		brightnessBits[0] = 1
 
-	elif currentTime >= sunset - previousTimeDelta or currentTime <= sunset - futureTimeDelta:
+	elif currentTime >= sunset - previousTimeDelta and currentTime <= sunset - previousTimeDelta:
 		brightnessBits[1] = 1
 
 
+	#####################################
+	#		RAIN/LIGHTNING/CLOUDS		#
+	#####################################
+
 	# Check weather conditions
 	for weatherCond in weatherDictionary['weather']:
+
+		description = weatherCond['description']
+
+		# RAIN
 		if 'rain' in weatherCond['main']:
 			# set weather bit to 0
 			weatherBits[3] = 0
 			# Check how much rain there is
-			description = weatherCond['description']
 			if description == "light rain" or description == "light intensity shower rain":
 				weatherBits[1:3] = [0, 1]
 			elif description == "moderate rain" or description == "shower rain":
 				weatherBits[1:3] = [1, 0]
 			else:
 				weatherBits[1:3] = [1, 1]
+		# SNOW
 		if 'snow' in weatherCond['main']:
 			# set weather bits to 1
 			weatherBits[3] = 1
-			description = weatherCond['description']
 			if description == "light snow" or description == "light rain and snow" or description == "light shower snow":
 				weatherBits[1:3] = [0, 1]
 			elif description == "snow" or description == "rain and snow" or description == "shower snow":
 				weatherBits[1:3] = [1, 0]
 			else:
 				weatherBits[1:3] = [1, 1]
+		# LIGHTNING
 		if 'thunderstorm' in weatherCond['main']:
 			if description == "light thunderstorm" or description == "thunderstorm with light rain" or description == "thunderstorm with light drizzle":
 				weatherBits[1:3] = [0, 1]
@@ -141,6 +152,26 @@ def setWeatherBits(weatherDictionary):
 				weatherBits[1:3] = [1, 0]
 			else:
 				weatherBits[1:3] = [1, 1]
+
+
+	###########################
+	# 		BRIGHTNESS 		  #
+	###########################
+
+	# Get the cloud percentage
+	# 1 = no clouds (i think)
+	cloudiness = weatherDictionary['clouds']['all']
+
+	if cloudiness > 0.8:
+		brightnessBits[2:-1] = [1, 1, 1, 1, 1]
+	elif cloudiness > 0.6:
+		brightnessBits[2:-1] = [1, 1, 0, 0 ,0]
+	elif cloudiness > 0.4:
+		brightnessBits[2:-1] = [1, 0, 0, 0, 0]
+	else:
+		brightnessBits[2:-1] = [0, 1, 0, 0, 0]
+
+	
 
 	finalArray = brightnessBits + weatherBits
 
