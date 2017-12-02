@@ -1,7 +1,8 @@
 import requests
 from tzwhere import tzwhere
-from datetime import datetime
+from datetime import datetime, timedelta
 from pytz import timezone
+import pytz
 
 API_KEY = '4f6f8f30f593ed64cec14b81dd480eb2'
 
@@ -12,7 +13,7 @@ def mainFunc(zipCode):
 	'''
 
 	# get the weather dictionary
-	weatherDict = getWeather(91711)
+	weatherDict = getWeather(zipCode)
 		
 	# Run the final
 	return setWeatherBits(weatherDict)
@@ -51,6 +52,8 @@ def getCurrentTime(coordinates):
 	# Get the current UTC time
 	currentTime = datetime.now(timezone(tzResult))
 
+	currentTime = currentTime.replace(tzinfo = None)
+
 	return currentTime
 
 def setWeatherBits(weatherDictionary):
@@ -64,15 +67,15 @@ def setWeatherBits(weatherDictionary):
 	# Last = padding
 	brightnessBits = [0, 0, 0, 0, 0, 0, 0, 1]
 
-	# First bit is cloud
+	# First bit is 0 cause we don't have anything to put here
 	# Second and third are precipitation (none/some/more/hella)
-	# 1 bit if precipitation is rain or snow
+	# 1 bit if precipitation is rain or snow (rain = 0)
 	# 2 bits for lightning (none/some/more/hella)
 	# 2 bits of padding
 	weatherBits = [0, 0, 0, 0, 0, 0, 1, 1]
 
 	# Entirely padding
-	paddingBits = [1, 1, 1, 1, 1, 1, 1, 1]
+	paddingBits = [0, 0, 0, 0, 0, 0, 0, 0]
 
 	# Check to make sure we actually have data. If we don't, just return 0
 	try:
@@ -81,21 +84,71 @@ def setWeatherBits(weatherDictionary):
 		return 0
 
 	# Get the time
-	getCurrentTime(weatherDictionary["coord"])
+	currentTime = getCurrentTime(weatherDictionary["coord"])
+
+
+	# Get the time for sunrise and sunset
+	sunrise =  datetime.fromtimestamp(
+        weatherDictionary['sys']['sunrise'])
+	sunset =  datetime.fromtimestamp(
+        weatherDictionary['sys']['sunset'])
+
+	# Calculate the amount of time until sunrise and sunset
+	timeToSunrise = abs(currentTime - sunrise)
+	timeToSunset = abs(currentTime - sunset)
+
+	# Create a time delta of 30 minutes, and 23 hours and 30 minutes
+	previousTimeDelta = timedelta(minutes = 30)
+	futureTimeDelta = timedelta(hours = 23, minutes = 30)
+
+
+	# Check if we are within 30 minutes of the sunrise
+	if currentTime >= sunrise - previousTimeDelta or currentTime <= sunrise - futureTimeDelta:
+		# If we are, set sunrise bits to 1
+		brightnessBits[0] = 1
+
+	elif currentTime >= sunset - previousTimeDelta or currentTime <= sunset - futureTimeDelta:
+		brightnessBits[1] = 1
+
 
 	# Check weather conditions
-	currentRain = 0
-	currentSnow = 0
 	for weatherCond in weatherDictionary['weather']:
 		if 'rain' in weatherCond['main']:
-			currentRain = 1
+			# set weather bit to 0
+			weatherBits[3] = 0
+			# Check how much rain there is
+			description = weatherCond['description']
+			if description == "light rain" or description == "light intensity shower rain":
+				weatherBits[1:3] = [0, 1]
+			elif description == "moderate rain" or description == "shower rain":
+				weatherBits[1:3] = [1, 0]
+			else:
+				weatherBits[1:3] = [1, 1]
 		if 'snow' in weatherCond['main']:
-			currentSnow = 1
+			# set weather bits to 1
+			weatherBits[3] = 1
+			description = weatherCond['description']
+			if description == "light snow" or description == "light rain and snow" or description == "light shower snow":
+				weatherBits[1:3] = [0, 1]
+			elif description == "snow" or description == "rain and snow" or description == "shower snow":
+				weatherBits[1:3] = [1, 0]
+			else:
+				weatherBits[1:3] = [1, 1]
+		if 'thunderstorm' in weatherCond['main']:
+			if description == "light thunderstorm" or description == "thunderstorm with light rain" or description == "thunderstorm with light drizzle":
+				weatherBits[1:3] = [0, 1]
+			elif description == "thunderstorm with rain" or description == "thunderstorm" or description == "thunderstorm with drizzle":
+				weatherBits[1:3] = [1, 0]
+			else:
+				weatherBits[1:3] = [1, 1]
 
 	finalArray = brightnessBits + weatherBits
 
+	print(finalArray)
+
 	# Convert the bits to an integer, and send that
 	intToReturn = convertBitsToInt(finalArray)
+
 
 	return intToReturn
 
