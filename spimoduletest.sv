@@ -97,6 +97,35 @@ assign ledstring[32*12:32*13-1] = (ledpattern[11] == 1)? ledbits : offled;
 assign ledstring[32*13:32*14-1] = endbits;
 						
 endmodule
+
+module generateRainInstance6(
+						input logic [0:5]ledpattern,
+						input logic [4:0]globalbrightness,
+						input logic [7:0]blue,
+						input logic [7:0]green,
+						input logic [7:0]red,
+						output logic[0:8*32-1]ledstring);
+// constants based on datasheet
+logic[31:0]startbits;
+logic[31:0]endbits;
+logic[31:0]ledbits;
+logic[31:0]offled;
+assign offled = 32'hE0000000;
+assign startbits = 32'b0;
+assign endbits = 32'hFFFFFFFF;
+assign ledbits = {3'b111,globalbrightness,blue,green,red};
+
+// assigns each part of ledstring bitwise (this is why the length is constant)
+assign ledstring[0:31] = startbits;
+assign ledstring[32*1:32*2-1] = (ledpattern[0] == 1)? ledbits : offled;
+assign ledstring[32*2:32*3-1] = (ledpattern[1] == 1)? ledbits : offled;
+assign ledstring[32*3:32*4-1] = (ledpattern[2] == 1)? ledbits : offled;
+assign ledstring[32*4:32*5-1] = (ledpattern[3] == 1)? ledbits : offled;
+assign ledstring[32*5:32*6-1] = (ledpattern[4] == 1)? ledbits : offled;
+assign ledstring[32*6:32*7-1] = (ledpattern[5] == 1)? ledbits : offled;
+assign ledstring[32*7:32*8-1] = endbits;
+						
+endmodule
 	
 	
 module spi_slave(input logic sck, // From master
@@ -122,15 +151,40 @@ always_ff @(posedge sck)
 // Align miso to falling edge of sck
 // Load d at the start
 always_ff @(negedge sck)
-	begin
 		qdelayed = q[7];
-		assign pimiso = (cnt == 0) ? d[7] : qdelayed;
-	end
+assign pimiso = (cnt == 0) ? d[7] : qdelayed;
+	
 endmodule
 
+module spi_slave_receive_only(input logic sck,
+										input logic pisck, //From master
+										input logic pimosi,//From master
+										output logic enablepi,
+										output logic [7:0] data); // Data received
+logic [15:0] q;
+always_ff @(posedge pisck)
+begin
+	q <= {q[14:0], pimosi}; // shift register
+
+end
+
+assign data = q[11:4];
+
+//always_comb
+//begin
+//	if(q[15:12] == 4'b1111 && q[3:0] == 4'b1111)
+//	begin
+//		data = q[11:4];
+//	end
+//end
+		
+endmodule
+
+
+
 module fakespi(input clk,
-					output [0:16]spiout);
-assign spiout = 16'b10_11000_0__00000000; //16'b01_11111_1__0_01_1_00_11; 
+					output [0:15]spiout);
+assign spiout = 16'b10101010__10101010; //16'b01_11111_1__0_01_1_00_11; 
 endmodule
 						
 // create the SPI output to turn a led with numleds a singled color as input
@@ -153,6 +207,9 @@ endmodule
 		
 		
 module spimoduletest(input logic clk,
+							input logic pimosi,
+							input logic pisck,
+							input logic enablepi,
 							output logic sckout,
 							output logic sckout2,
 							output logic sckout3,
@@ -162,7 +219,8 @@ module spimoduletest(input logic clk,
 							output logic mosismal,
 							output logic mosirain1,
 							output logic mosirain2,
-							output logic mosirain3);
+							output logic mosirain3,
+							output logic [7:0]spiout1);
 // reset, enable, and slow clock for led SPIs
 logic reset, sck;
 assign reset = 1'b0;
@@ -197,19 +255,28 @@ parameter rain2b = ((rain2len+2)*32);
 parameter rain3len = 12;
 parameter rain3b = ((rain3len+2)*32);
 
+logic [15:0] spiout;
+spi_slave_receive_only inittest(sck,pisck, pimosi, enablepi, spiout);
 
 
-logic [16:0]spiout;
-fakespi getfrompi(sck,spiout);
 
-logic [8:0]lred;
-logic [8:0]lblue;
-logic [8:0]lgreen;
-logic [8:0]rred;
-logic [8:0]rblue;
-logic [8:0]rgreen;
+logic [7:0]lred;
+logic [7:0]lblue;
+logic [7:0]lgreen;
+logic [7:0]lred1;
+logic [7:0]lblue1;
+logic [7:0]lgreen1;
+logic [7:0]lred2;
+logic [7:0]lblue2;
+logic [7:0]lgreen2;
+logic [7:0]lred3;
+logic [7:0]lblue3;
+logic [7:0]lgreen3;
+logic [7:0]rred;
+logic [7:0]rblue;
+logic [7:0]rgreen;
 
-logic [5:0]globalbrightness;
+logic [4:0]globalbrightness;
 assign globalbrightness = spiout[13:9];
 
 logic [1:0]speed, lightning;
@@ -223,43 +290,57 @@ assign cloud = spiout[7];
 //rain if 1, snow if 0
 assign rainsnow = spiout[4];
 
-always_ff @(posedge sck)
+
+
+
+						
+
+/*always_ff @(posedge sck)
 begin
+
 	if(sunrise||sunset)
 		begin
 			 lred = 8'hFF;
-			 lblue = 8'h00;
+			 lblue = 8'hFF;
 			 lgreen = 8'h00;
 		end
 	if(speed != 0 && rainsnow)
 		begin
 			rred = 8'hFF;
-			rblue = 8'hFF;
-			rgreen = 8'hFF;
+			rblue = 8'h00;
+			rgreen = 8'h00;
 		end
 	if(speed != 0 && !rainsnow)
 		begin
-			rred = 8'h00;
+			rred = 8'hFF;
 			rblue = 8'hFF;
 			rgreen = 8'h00;
 		end
-end
+end*/
 
 // assigns lanterns different dawn colors
 // generate outputs
 logic [largb-1:0]datainlarg;
-valueGenOneColor #(larglen) orangetest(globalbrightness,lblue,lgreen,lred,datainlarg);
+//valueGenOneColor #(larglen) orangetest(globalbrightness,lblue1,lgreen1,lred1,datainlarg);
 logic [medb-1:0]datainmed;
-valueGenOneColor #(medlen) bluetest(globalbrightness,lblue,lgreen,lred,datainmed);
+//valueGenOneColor #(medlen) bluetest(globalbrightness,lblue2,lgreen2,lred2,datainmed);
 logic [smalb-1:0]datainsmal;
 valueGenOneColor #(smallen) pinktest(globalbrightness,lblue,lgreen,lred,datainsmal);
+
+generateRainInstance testspi(spiout[15:4], 5'b11111, 8'hFF,8'hFF,8'hFF,datainlarg);
+generateRainInstance6 testspi2(spiout[3:0], 5'b11111, 8'hFF,8'hFF,8'hFF,datainmed);
+
+
 // do the spi
 paramspi #(largb) bigstrand(clk,sck,mosilarg,datainlarg);
 paramspi #(medb) medstrand(clk,sck,mosimed,datainmed);
 paramspi #(smalb) smalstrand(clk,sck,mosismal,datainsmal);
 
 // controls three rain strands
-//rain createrain(clk,sck, globalbrightness,rblue,rgreen,rred,2'b10,mosirain1);
-//rain rain2constructor(clk,sck, globalbrightness,rblue,rgreen,rred,2'b01,mosirain2);
+//rain createrain(clk,sck, globalbrightness,rblue,rgreen,rred,speed,mosirain1);
+//rain rain2constructor(clk,sck, globalbrightness,rblue,rgreen,rred,speed,mosirain2);
 //rain rain3constructor(clk,sck, globalbrightness,rblue,rgreen,rred,speed,mosirain3);
+
+
+
 endmodule
