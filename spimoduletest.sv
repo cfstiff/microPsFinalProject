@@ -156,19 +156,31 @@ assign pimiso = (cnt == 0) ? d[7] : qdelayed;
 	
 endmodule
 
-module spi_slave_receive_only(input logic sck,
+module spi_slave_receive_only(input logic pien,
 										input logic pisck, //From master
 										input logic pimosi,//From master
 										output logic enablepi,
 										output logic [7:0] data); // Data received
-logic [15:0] q;
+logic [7:0] q;
+always_ff @(posedge pisck)
+	q<={q[6:0],pimosi};
+
+always_ff @(negedge pien)
+	data <= q;
+
+/*
+logic [3:0] count;
+always_ff @(posedge pien || pimosi)
+	if(pien) count = 0;
+	else count = count +1;
 always_ff @(posedge pisck)
 begin
 	q <= {q[14:0], pimosi}; // shift register
-
+	if(count == 4'b1111) 
+		data = q[11:4];
 end
-
-assign data = q[11:4];
+*/
+//assign data = q[11:4];
 
 //always_comb
 //begin
@@ -209,11 +221,10 @@ endmodule
 module spimoduletest(input logic clk,
 							input logic pimosi,
 							input logic pisck,
-							input logic enablepi,
+							input logic pien,
 							output logic sckout,
 							output logic sckout2,
 							output logic sckout3,
-							output logic sckout4,
 							output logic mosilarg,
 							output logic mosimed,
 							output logic mosismal,
@@ -256,8 +267,8 @@ parameter rain3len = 12;
 parameter rain3b = ((rain3len+2)*32);
 
 logic [15:0] spiout;
-spi_slave_receive_only inittest(sck,pisck, pimosi, enablepi, spiout);
-
+spi_slave_receive_only inittest(pien,pisck, pimosi, enablepi, spiout);
+assign spiout1 = spiout;
 
 
 logic [7:0]lred;
