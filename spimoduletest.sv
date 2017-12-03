@@ -159,37 +159,17 @@ endmodule
 module spi_slave_receive_only(input logic pien,
 										input logic pisck, //From master
 										input logic pimosi,//From master
-										output logic enablepi,
 										output logic [7:0] data); // Data received
 logic [7:0] q;
 always_ff @(posedge pisck)
+begin
 	q<={q[6:0],pimosi};
+	
 
+end
+	
 always_ff @(negedge pien)
 	data <= q;
-
-/*
-logic [3:0] count;
-always_ff @(posedge pien || pimosi)
-	if(pien) count = 0;
-	else count = count +1;
-always_ff @(posedge pisck)
-begin
-	q <= {q[14:0], pimosi}; // shift register
-	if(count == 4'b1111) 
-		data = q[11:4];
-end
-*/
-//assign data = q[11:4];
-
-//always_comb
-//begin
-//	if(q[15:12] == 4'b1111 && q[3:0] == 4'b1111)
-//	begin
-//		data = q[11:4];
-//	end
-//end
-		
 endmodule
 
 
@@ -246,7 +226,6 @@ assign sck = counter[6];
 assign sckout = sck;
 assign sckout2 = sck;
 assign sckout3 = sck;
-assign sckout4 = sck;
 
 // this ends up not being used, will be deleted soon
 
@@ -266,10 +245,9 @@ parameter rain2b = ((rain2len+2)*32);
 parameter rain3len = 12;
 parameter rain3b = ((rain3len+2)*32);
 
-logic [15:0] spiout;
-spi_slave_receive_only inittest(pien,pisck, pimosi, enablepi, spiout);
+logic [7:0] spiout;
+spi_slave_receive_only inittest(pien,pisck, pimosi,spiout);
 assign spiout1 = spiout;
-
 
 logic [7:0]lred;
 logic [7:0]lblue;
@@ -288,15 +266,15 @@ logic [7:0]rblue;
 logic [7:0]rgreen;
 
 logic [4:0]globalbrightness;
-assign globalbrightness = spiout[13:9];
+//assign globalbrightness = spiout[13:9];
 
 logic [1:0]speed, lightning;
 assign speed = spiout[6:5];
 assign lightning = spiout[3:2];
 
 logic sunrise,sunset, cloud, rainsnow;
-assign sunrise = spiout[15];
-assign sunset = spiout[14];
+//assign sunrise = spiout[15];
+//assign sunset = spiout[14];
 assign cloud = spiout[7];
 //rain if 1, snow if 0
 assign rainsnow = spiout[4];
@@ -338,8 +316,8 @@ logic [medb-1:0]datainmed;
 logic [smalb-1:0]datainsmal;
 valueGenOneColor #(smallen) pinktest(globalbrightness,lblue,lgreen,lred,datainsmal);
 
-generateRainInstance testspi(spiout[15:4], 5'b11111, 8'hFF,8'hFF,8'hFF,datainlarg);
-generateRainInstance6 testspi2(spiout[3:0], 5'b11111, 8'hFF,8'hFF,8'hFF,datainmed);
+generateRainInstance testspi(spiout, 5'b11111, 8'hFF,8'hFF,8'hFF,datainlarg);
+//generateRainInstance6 testspi2(spiout[3:0], 5'b11111, 8'hFF,8'hFF,8'hFF,datainmed);
 
 
 // do the spi
