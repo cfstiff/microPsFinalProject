@@ -8,6 +8,23 @@ module paramcounter #(parameter N)
 			else q<=q+1;
 endmodule
 
+/*module paramspi #(parameter N)(input logic clk,
+					input logic sck,
+					output logic mosi,
+					input logic [N-1:0]datain);
+logic[N-1:0]p;//=160'b0;
+logic [9:0]count;
+assign mosi = datain[N-count-1];
+	
+always_ff @(posedge sck)
+	if(count < N-1)
+		count = count + 1;
+	
+endmodule
+*/
+
+
+
 module paramspi #(parameter N)(input logic clk,
 					input logic sck,
 					output logic mosi,
@@ -163,6 +180,7 @@ module spimoduletest(input logic clk,
 							input logic pimosi,
 							input logic pisck,
 							input logic pien,
+							input logic pispienable,
 							output logic sckout,
 							output logic sckout2,
 							output logic sckout3,
@@ -207,7 +225,7 @@ parameter rain3len = 12;
 parameter rain3b = ((rain3len+2)*32);
 
 logic [15:0] spiout;
-//assign spiout = 16'b01_11111_1__0_01_1_00_11; 
+//assign spiout = 16'b01_11111_1__0_11_1_00_11; 
 spi_slave_receive_only inittest(pien,pisck, pimosi,spiout);
 assign spiout1 = spiout;
 
@@ -228,6 +246,7 @@ logic [7:0]rblue;
 logic [7:0]rgreen;
 
 logic [4:0]globalbrightness;
+logic [4:0]rainbrightness;
 assign globalbrightness = spiout[13:9];
 
 logic [1:0]speed, lightning;
@@ -251,18 +270,28 @@ begin
 			 lblue = 8'hFF;
 			 lgreen = 8'h00;
 		end
-	if(speed != 0 && rainsnow)
+	if(!sunrise && !sunset)
 		begin
-			rred = 8'hFF;
-			rblue = 8'h00;
-			rgreen = 8'h00;
+			lred = 8'hFF;
+			 lblue = 8'hFF;
+			 lgreen = 8'hFF;
 		end
-	if(speed != 0 && !rainsnow)
+	if(!rainsnow)
 		begin
 			rred = 8'hFF;
 			rblue = 8'hFF;
+			rgreen = 8'hFF;
+		end
+	if(rainsnow)
+		begin
+			rred = 8'h00;
+			rblue = 8'hFF;
 			rgreen = 8'h00;
 		end
+	if(speed==0)
+		rainbrightness = 5'b00000;
+	if(speed != 0)
+		rainbrightness = globalbrightness;
 end
 
 // assigns lanterns different dawn colors
@@ -281,8 +310,8 @@ paramspi #(medb) medstrand(clk,sck,mosimed,datainmed);
 paramspi #(smalb) smalstrand(clk,sck,mosismal,datainsmal);
 
 // controls three rain strands
-rain createrain(clk,sck, globalbrightness,rblue,rgreen,rred,speed,mosirain1);
-//rain rain2constructor(clk,sck, globalbrightness,rblue,rgreen,rred,speed,mosirain2);
-//rain rain3constructor(clk,sck, globalbrightness,rblue,rgreen,rred,speed,mosirain3);
+rain createrain(clk,sck, rainbrightness,rblue,rgreen,rred,speed,mosirain1);
+rain rain2constructor(clk,sck, rainbrightness,rblue,rgreen,rred,speed,mosirain2);
+rain rain3constructor(clk,sck, rainbrightness,rblue,rgreen,rred,speed,mosirain3);
 
 endmodule
