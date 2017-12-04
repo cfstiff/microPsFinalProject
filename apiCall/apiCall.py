@@ -31,6 +31,8 @@ def getWeather(zipCode):
 
 	# Conver the string version of dictionary to an actual dictionary
 	dictionary = eval(r.text)
+
+	print(dictionary)
 	# return the weather text
 	return dictionary
 
@@ -162,11 +164,11 @@ def setWeatherBits(weatherDictionary):
 	# 1 = no clouds (i think)
 	cloudiness = weatherDictionary['clouds']['all']
 
-	if cloudiness > 0.8:
+	if cloudiness < 25:
 		brightnessBits[2:-1] = [1, 1, 1, 1, 1]
-	elif cloudiness > 0.6:
+	elif cloudiness < 50:
 		brightnessBits[2:-1] = [1, 1, 0, 0 ,0]
-	elif cloudiness > 0.4:
+	elif cloudiness < 75:
 		brightnessBits[2:-1] = [1, 0, 0, 0, 0]
 	else:
 		brightnessBits[2:-1] = [0, 1, 0, 0, 0]
