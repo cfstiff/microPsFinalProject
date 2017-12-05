@@ -86,7 +86,8 @@ def setWeatherBits(weatherDictionary):
 		return 0
 
 	# Get the time
-	currentTime = getCurrentTime(weatherDictionary["coord"])
+#	currentTime = getCurrentTime(weatherDictionary["coord"])
+	currentTime = datetime.now()
 
 	#########################
 	#  SUNSET/SUNRISE/TIME  #
@@ -106,13 +107,12 @@ def setWeatherBits(weatherDictionary):
 	previousTimeDelta = timedelta(minutes = 30)
 
 
-
 	# Check if we are within 30 minutes of the sunrise
-	if currentTime >= sunrise - previousTimeDelta and currentTime <= sunrise - previousTimeDelta:
+	if currentTime >= sunrise - previousTimeDelta and currentTime <= sunrise + previousTimeDelta:
 		# If we are, set sunrise bits to 1
 		brightnessBits[0] = 1
 
-	elif currentTime >= sunset - previousTimeDelta and currentTime <= sunset - previousTimeDelta:
+	elif currentTime >= sunset - previousTimeDelta and currentTime <= sunset + previousTimeDelta:
 		brightnessBits[1] = 1
 
 
@@ -126,7 +126,7 @@ def setWeatherBits(weatherDictionary):
 		description = weatherCond['description']
 
 		# RAIN
-		if 'rain' in weatherCond['main']:
+		if 'Rain' in weatherCond['main']:
 			# set weather bit to 0
 			weatherBits[3] = 0
 			# Check how much rain there is
@@ -137,7 +137,7 @@ def setWeatherBits(weatherDictionary):
 			else:
 				weatherBits[1:3] = [1, 1]
 		# SNOW
-		if 'snow' in weatherCond['main']:
+		if 'Snow' in weatherCond['main']:
 			# set weather bits to 1
 			weatherBits[3] = 1
 			if description == "light snow" or description == "light rain and snow" or description == "light shower snow":
@@ -147,7 +147,7 @@ def setWeatherBits(weatherDictionary):
 			else:
 				weatherBits[1:3] = [1, 1]
 		# LIGHTNING
-		if 'thunderstorm' in weatherCond['main']:
+		if 'Thunderstorm' in weatherCond['main']:
 			if description == "light thunderstorm" or description == "thunderstorm with light rain" or description == "thunderstorm with light drizzle":
 				weatherBits[1:3] = [0, 1]
 			elif description == "thunderstorm with rain" or description == "thunderstorm" or description == "thunderstorm with drizzle":

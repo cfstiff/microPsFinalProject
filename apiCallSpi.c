@@ -3,7 +3,7 @@
 
 // Code from Python documentation with slight modifications
 
-int getWeatherInt()
+int getWeatherInt(char* zipCode)
 {
 	// Make c actually import the pythonpath
 setenv("PYTHONPATH", ".", 1);
@@ -13,7 +13,7 @@ setenv("PYTHONPATH", ".", 1);
     argv[0] = "./apiCall";
     argv[1] = "apiCall";
     argv[2] = "mainFunc";
-    argv[3] = "91711";
+    argv[3] = zipCode;
     
     PyObject *pName, *pModule, *pDict, *pFunc;
     PyObject *pArgs, *pValue;
@@ -106,19 +106,31 @@ int main(){
     spiInit(250, 0);
     printf("Starting program \n");
 
+   pinMode(19, INPUT);
+   pinMode(21, OUTPUT);
 int i = 0;
     // While loop forever, because we want to constantly be checking
     while(i < 4){
       	 // Get the weather bits
 	printf("loop ran");        
-int weatherBitVal = getWeatherInt();
-
+	
+	int weatherBitVal;
+	if (digitalRead(19) == 1)
+		weatherBitVal  = getWeatherInt("72650");
+	else
+		weatherBitVal = 0;
+	weatherBitVal = 43959;;
         printf("Bits have integer value of %d \n", weatherBitVal);
 	printf("%d \n", weatherBitVal);
 	i++;
+	
+	digitalWrite(21, 1);
+	spiSendReceive16(weatherBitVal);
+	digitalWrite(21, 0);
 	printf("Delaying");
-	delayMinutes(5);
-	printf("%d \n", i);    
+	delayMinutes(1);	
+	printf("%d \n", i);
+	    
 }
 // Stop the python interpreter
 Py_Finalize();

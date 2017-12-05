@@ -1,3 +1,4 @@
+
 /*	EasyPIO.h
  *		Created: 		8 October 2013
  *						Sarah_Lichtman@hmc.edu & Joshua_Vasquez@hmc.edu
@@ -19,7 +20,6 @@
 #include <stdlib.h>
 #include <fcntl.h>
 #include <unistd.h>
-
 typedef unsigned int uint;
 
 /////////////////////////////////////////////////////////////////////
