@@ -108,7 +108,9 @@ int getUserBrightness(void){
 	if (brightnessFile != NULL)
 	fscanf(brightnessFile, "%s", buff);
 	else
+{
 	printf("file not opening");
+	return 0; }
 	return atoi(buff);
 }
 
@@ -131,26 +133,62 @@ int main(){
    pinMode(21, OUTPUT);
 int i = 0;
     // While loop forever, because we want to constantly be checking
-    while(i < 4){
+    while(i < 10){
       	 // Get the weather bits
-	printf("loop ran");        
+	printf("loop ran\n");        
 	int userBrightness = getUserBrightness();
 	printf("User brightness is %d\n", userBrightness);	
 	int weatherBitVal;
-	if (digitalRead(19) == 1)
-		weatherBitVal  = getWeatherInt("72650", userBrightness);
-	else
-		weatherBitVal = 0;
+	// If the light is off, don't  get the weather
+	if (digitalRead(19) == 0)
+		weatherBitVal  = 0;
+	else{
+		// Get the weather bits
+		int weatherBits = getWeatherInt("91711", userBrightness);
+		// If the weather bits are 0, don't change them
+		// Don't want to turn it off because of API errors
+		if (weatherBits != 0)
+		weatherBitVal = weatherBits;	
+	/*
+
+	DEMO MODE GOES HERE
+
+	loop 0 = sunrise
+	loop 1 = sunset
+	loop 2 = low speed lightning and low speed rain
+	loop 3 = high speed lightning and high speed snow
+	AFTER LOOP 3 USE LIVE WEATHER DATA
+	loop 4 = user defined brightness
+	loop 5 = automatic brightness
+	loop 6 = normal weather (turn the cloud off)
+	loop 7 = normal weather (turn the cloud back on)
+
+	*/
+	if (i == 0){
+		weatherBitVal = 48899;
+	}
+	else if (i == 1)
+		weatherBitVal = 32515;
+	else if (i == 2)
+		weatherBitVal = 16167;
+	else if (i == 3)
+		weatherBitVal = 16255;
+
+}
 //	weatherBitVal = 43959;;
         printf("Bits have integer value of %d \n", weatherBitVal);
 	printf("%d \n", weatherBitVal);
 	i++;
 	
+	//Write our SPI enable pin high	
 	digitalWrite(21, 1);
+	// Send the relevant data
 	spiSendReceive16(weatherBitVal);
+	// Write the SPI enable pin low
 	digitalWrite(21, 0);
+	// Wait for some time before checking again
 	printf("Delaying");
-	delayMinutes(1);	
+	delayMinutes(3);	
 	printf("%d \n", i);
 	    
 }
