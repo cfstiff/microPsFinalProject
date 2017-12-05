@@ -8,22 +8,6 @@ module paramcounter #(parameter N)
 			else q<=q+1;
 endmodule
 
-/*module paramspi #(parameter N)(input logic clk,
-					input logic sck,
-					output logic mosi,
-					input logic [N-1:0]datain);
-logic[N-1:0]p;//=160'b0;
-logic [9:0]count;
-assign mosi = datain[N-count-1];
-	
-always_ff @(posedge sck)
-	if(count < N-1)
-		count = count + 1;
-	
-endmodule
-*/
-
-
 
 module paramspi #(parameter N)(input logic clk,
 					input logic sck,
@@ -79,26 +63,6 @@ always_ff @(posedge slock)
 	end
 endmodule
 
-
-module raincontroller(input logic clk,
-						input logic sck,
-						input logic raen,
-						input logic [4:0]globalbrightness,
-						input logic [7:0]blue,
-						input logic [7:0]green,
-						input logic [7:0]red,
-						input logic [1:0]speed,
-						output logic mosirain1,
-						output logic mosirain2,
-						output logic mosirain3);
-						
-logic [4:0] rainbrightness;
-assign rainbrightness = (raen==0)? 5'b00000 : globalbrightness;						
-
-
-
-endmodule
-
 // uses ledpattern to create the spi output for an individual moment of rain
 module generateRainInstance(
 						input logic [0:11]ledpattern,
@@ -135,7 +99,7 @@ assign ledstring[32*13:32*14-1] = endbits;
 						
 endmodule
 
-
+// for communication between pi and fpga
 module spi_slave_receive_only(input logic pien,
 										input logic pisck, //From master
 										input logic pimosi,//From master
@@ -145,16 +109,9 @@ always_ff @(posedge pisck)
 begin
 	q<={q[14:0],pimosi};
 end
-	
+// pien is an enable pin connected to the pi, it stays high for the duration of sending 	
 always_ff @(negedge pien)
 	data <= q;
-endmodule
-
-
-
-module fakespi(input clk,
-					output [0:15]spiout);
-assign spiout = 16'b10101010__10101010; //16'b01_11111_1__0_01_1_00_11; 
 endmodule
 						
 // create the SPI output to turn a led with numleds a singled color as input
@@ -180,7 +137,6 @@ module spimoduletest(input logic clk,
 							input logic pimosi,
 							input logic pisck,
 							input logic pien,
-							input logic pispienable,
 							output logic sckout,
 							output logic sckout2,
 							output logic sckout3,
@@ -224,9 +180,10 @@ parameter rain3len = 12;
 parameter rain3b = ((rain3len+2)*32);
 
 logic [15:0] spiout;
-//assign spiout = 16'b01_11111_1__0_00_1_00_11; 
+//assign spiout = 16'b00_11111_1__0_11_1_11_11; 
 spi_slave_receive_only inittest(pien,pisck, pimosi,spiout);
 
+// overall colors for rain and lantern, colors for each latern used for sunrise/set
 logic [7:0]lred;
 logic [7:0]lblue;
 logic [7:0]lgreen;
@@ -243,17 +200,19 @@ logic [7:0]rred;
 logic [7:0]rblue;
 logic [7:0]rgreen;
 
+// rain/lanternbrightness used for cases where there's a difference between them
 logic [4:0]globalbrightness,rainbrightness,lanternbrightness;
 assign globalbrightness = spiout[13:9];
 
+// speed controls rate of rain or snow
+// lightning designates rate/existance of lightning
 logic [1:0]speed, lightning;
 assign speed = spiout[6:5];
 assign lightning = spiout[3:2];
 
-logic sunrise,sunset, cloud, rainsnow;
+logic sunrise,sunset, rainsnow;
 assign sunrise = spiout[15];
 assign sunset = spiout[14];
-assign cloud = spiout[7];
 //rain if 1, snow if 0
 assign rainsnow = spiout[4];
 						
@@ -261,6 +220,8 @@ assign rainsnow = spiout[4];
 						
 always_ff @(posedge sck)
 begin
+	// we use logic for a series of counter bits to create a periodic section of lightning with semi-random flashes within it
+	// 01 is least, 10 is more lightning, 11 is more lightning, occuring twice as fast
 	if(lightning == 2'b01)
 		begin
 			if((counter[29:26] == 4'b1111)&(counter[23]^counter[24]^counter[22]))
@@ -288,8 +249,10 @@ begin
 			else
 				lanternbrightness = globalbrightness;
 		end
+	// brightness is unaffected if there is no lightning
 	else lanternbrightness = globalbrightness;
 	
+	// color cases for lanterns- sunrise is orange, orange, pink, sunset is pink pink orange, all white otherwise
 	if(sunrise)
 		begin
 			 lred1 = 8'hFF;
@@ -327,6 +290,7 @@ begin
 			 lgreen3 = lgreen1;
 		end
 	
+	// rain is blue because it's water, snow is white
 	if(!rainsnow)
 		begin
 			rred = 8'hFF;
@@ -340,7 +304,7 @@ begin
 			rgreen = 8'h00;
 		end
 		
-		
+	// if there is no rain, the brightness is set to zero which effectively turns them off
 	if(speed==0)
 		rainbrightness = 5'b00000;
 	else if(speed != 0)
