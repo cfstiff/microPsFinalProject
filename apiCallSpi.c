@@ -77,7 +77,6 @@ setenv("PYTHONPATH", ".", 1);
         fprintf(stderr, "Failed to load \"%s\"\n", argv[1]);
         return 1;
     }
-//    Py_Finalize();
     return outputVal;
 }
 
@@ -93,12 +92,26 @@ void delayMinutes(int numMinutes){
     delayMillis(delayInMillis);
 }
 
+int getUserBrightness(void){
 
+	/*
+	Opens a txt file to see what the user has set the brightness to
+	Returns this as an integer
+	*/
+	FILE* brightnessFile;
+	char buff[255];
+	
+	brightnessFile = fopen("brightness/brightness.txt", "r");
+	fscanf(brightnessFile, "%s", buff);
+	return atoi(buff);
+}
+
+	
 
 int main(){
     /*
 
-    Runs a timer. Every 15 minutes, checks the weather, and then sends the bits over SPI
+    Runs a timer. Every so often, checks the weather, and then sends the bits over SPI
 
     */
     // We only need to initialize EasyPIO and SPI once
@@ -106,6 +119,8 @@ int main(){
     spiInit(250, 0);
     printf("Starting program \n");
 
+
+   // Set up pins we need for SPI	
    pinMode(19, INPUT);
    pinMode(21, OUTPUT);
 int i = 0;
@@ -113,7 +128,8 @@ int i = 0;
     while(i < 4){
       	 // Get the weather bits
 	printf("loop ran");        
-	
+	int userBrightness = getUserBrightness();
+	printf("User brightness is %d\n", userBrightness);	
 	int weatherBitVal;
 	if (digitalRead(19) == 1)
 		weatherBitVal  = getWeatherInt("72650");

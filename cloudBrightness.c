@@ -8,7 +8,10 @@ int main(void){
 	
 	// Get our brightness value from the QUERY_STRING value
 	const char* brightnessValue = getenv("QUERY_STRING");
-
+//	const char* brightnessValue = "brightness=23";	
+	// Get a pointer to the equal sign
+	char* arg  = strchr(brightnessValue, '=');
+	 
 	// Check if the value is null
 	if (brightnessValue == NULL){
 		printf("Sorry, brightness value cannot be read");
@@ -24,7 +27,16 @@ int main(void){
 
 		// Write out the brightness
 		if (brightnessFile != NULL){
-			fputs(brightnessValue, brightnessFile);
+			// Only  write characters after the equal sign 
+			arg++;
+			printf("%c\n", *arg);
+			while (*arg)
+			{
+//				arg++;
+				printf("%c\n", *arg);
+				fputc(*arg, brightnessFile);
+				++arg;
+}	
 			// Close the file
 			fclose(brightnessFile);
 			// Redirect back to the homepage
