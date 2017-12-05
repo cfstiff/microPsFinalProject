@@ -189,14 +189,13 @@ module spimoduletest(input logic clk,
 							output logic mosismal,
 							output logic mosirain1,
 							output logic mosirain2,
-							output logic mosirain3,
-							output logic [7:0]spiout1);
+							output logic mosirain3);
 // reset, enable, and slow clock for led SPIs
 logic reset, sck;
 assign reset = 1'b0;
 
 // bit size of sck clock counter
-parameter sckN = 26;
+parameter sckN = 30;
 logic [sckN-1:0]counter;						
 paramcounter #(sckN) sckmake(clk, reset, counter);
 assign sck = counter[6];
@@ -225,9 +224,8 @@ parameter rain3len = 12;
 parameter rain3b = ((rain3len+2)*32);
 
 logic [15:0] spiout;
-//assign spiout = 16'b01_11111_1__0_11_1_00_11; 
+//assign spiout = 16'b01_11111_1__0_00_1_00_11; 
 spi_slave_receive_only inittest(pien,pisck, pimosi,spiout);
-assign spiout1 = spiout;
 
 logic [7:0]lred;
 logic [7:0]lblue;
@@ -245,8 +243,7 @@ logic [7:0]rred;
 logic [7:0]rblue;
 logic [7:0]rgreen;
 
-logic [4:0]globalbrightness;
-logic [4:0]rainbrightness;
+logic [4:0]globalbrightness,rainbrightness,lanternbrightness;
 assign globalbrightness = spiout[13:9];
 
 logic [1:0]speed, lightning;
@@ -261,47 +258,103 @@ assign cloud = spiout[7];
 assign rainsnow = spiout[4];
 						
 
+						
 always_ff @(posedge sck)
 begin
-
-	if(sunrise||sunset)
+	if(lightning == 2'b01)
 		begin
-			 lred = 8'hFF;
-			 lblue = 8'hFF;
-			 lgreen = 8'h00;
+			if((counter[29:26] == 4'b1111)&(counter[23]^counter[24]^counter[22]))
+			begin
+				lanternbrightness = 5'b00000;
+			end
+			else
+				lanternbrightness = globalbrightness;
 		end
-	if(!sunrise && !sunset)
+	else if (lightning == 2'b10)
 		begin
-			lred = 8'hFF;
-			 lblue = 8'hFF;
-			 lgreen = 8'hFF;
+			if((counter[29:27] == 3'b111)&(counter[23]^counter[24]^counter[22]))
+			begin
+				lanternbrightness = 5'b00000;
+			end
+			else
+				lanternbrightness = globalbrightness;
 		end
+	else if (lightning == 2'b11)
+		begin
+			if((counter[29:27] == 3'b111 | counter[29:27] == 3'b011)&(counter[23]^counter[24]^counter[22]))
+			begin
+				lanternbrightness = 5'b00000;
+			end
+			else
+				lanternbrightness = globalbrightness;
+		end
+	else lanternbrightness = globalbrightness;
+	
+	if(sunrise)
+		begin
+			 lred1 = 8'hFF;
+			 lblue1 = 8'h00;
+			 lgreen1 = 8'h32;
+			 lred2 = 8'hFF;
+			 lblue2 = 8'hAA;
+			 lgreen2 = 8'h00;
+			 lred3 = 8'hFF;
+			 lblue3 = 8'h00;
+			 lgreen3 = 8'h52;
+		end
+	else if(sunset)
+		begin
+			 lred1 = 8'hFF;
+			 lblue1 = 8'hAA;
+			 lgreen1 = 8'h00;
+			 lred2 = 8'hFF;
+			 lblue2 = 8'h00;
+			 lgreen2 = 8'h32;
+			 lred3 = 8'hFF;
+			 lblue3 = 8'h99;
+			 lgreen3 = 8'h00;
+		end
+	else if(!sunrise && !sunset)
+		begin
+			lred1 = 8'hFF;
+			 lblue1 = 8'hFF;
+			 lgreen1 = 8'hFF;
+			 lred2 = lred1;
+			 lblue2 = lblue1;
+			 lgreen2 = lgreen1;
+			 lred3 = lred1;
+			 lblue3 = lblue1;
+			 lgreen3 = lgreen1;
+		end
+	
 	if(!rainsnow)
 		begin
 			rred = 8'hFF;
 			rblue = 8'hFF;
 			rgreen = 8'hFF;
 		end
-	if(rainsnow)
+	else if(rainsnow)
 		begin
 			rred = 8'h00;
 			rblue = 8'hFF;
 			rgreen = 8'h00;
 		end
+		
+		
 	if(speed==0)
 		rainbrightness = 5'b00000;
-	if(speed != 0)
+	else if(speed != 0)
 		rainbrightness = globalbrightness;
 end
 
 // assigns lanterns different dawn colors
 // generate outputs
 logic [largb-1:0]datainlarg;
-valueGenOneColor #(larglen) orangetest(globalbrightness,lblue,lgreen,lred,datainlarg);
+valueGenOneColor #(larglen) orangetest(globalbrightness,lblue1,lgreen1,lred1,datainlarg);
 logic [medb-1:0]datainmed;
-valueGenOneColor #(medlen) bluetest(globalbrightness,lblue,lgreen,lred,datainmed);
+valueGenOneColor #(medlen) bluetest(lanternbrightness,lblue2,lgreen2,lred2,datainmed);
 logic [smalb-1:0]datainsmal;
-valueGenOneColor #(smallen) pinktest(globalbrightness,lblue,lgreen,lred,datainsmal);
+valueGenOneColor #(smallen) pinktest(globalbrightness,lblue3,lgreen3,lred3,datainsmal);
 
 
 // do the spi
