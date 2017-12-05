@@ -3,18 +3,21 @@
 
 // Code from Python documentation with slight modifications
 
-int getWeatherInt(char* zipCode)
+int getWeatherInt(char* zipCode, int brightness)
 {
 	// Make c actually import the pythonpath
 setenv("PYTHONPATH", ".", 1);
     // Create the arguments
-    int argc = 4;
+    int argc = 5;
     char** argv = (char**)malloc(sizeof(char*)*argc);
     argv[0] = "./apiCall";
     argv[1] = "apiCall";
     argv[2] = "mainFunc";
     argv[3] = zipCode;
-    
+	char str[10];
+    sprintf(str, "%d", brightness);
+    argv[4] = str;
+
     PyObject *pName, *pModule, *pDict, *pFunc;
     PyObject *pArgs, *pValue;
     int i;
@@ -102,7 +105,10 @@ int getUserBrightness(void){
 	char buff[255];
 	
 	brightnessFile = fopen("brightness/brightness.txt", "r");
+	if (brightnessFile != NULL)
 	fscanf(brightnessFile, "%s", buff);
+	else
+	printf("file not opening");
 	return atoi(buff);
 }
 
@@ -132,10 +138,10 @@ int i = 0;
 	printf("User brightness is %d\n", userBrightness);	
 	int weatherBitVal;
 	if (digitalRead(19) == 1)
-		weatherBitVal  = getWeatherInt("72650");
+		weatherBitVal  = getWeatherInt("72650", userBrightness);
 	else
 		weatherBitVal = 0;
-	weatherBitVal = 43959;;
+//	weatherBitVal = 43959;;
         printf("Bits have integer value of %d \n", weatherBitVal);
 	printf("%d \n", weatherBitVal);
 	i++;

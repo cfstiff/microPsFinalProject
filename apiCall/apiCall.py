@@ -7,7 +7,7 @@ import pytz
 API_KEY = '4f6f8f30f593ed64cec14b81dd480eb2'
 
 
-def mainFunc(zipCode):
+def mainFunc(zipCode, userBrightness):
 	'''
 		Takes in a zipcode, and returns the correct sequence of bits
 	'''
@@ -16,7 +16,7 @@ def mainFunc(zipCode):
 	weatherDict = getWeather(zipCode)
 		
 	# Run the final
-	return setWeatherBits(weatherDict)
+	return setWeatherBits(weatherDict, userBrightness)
 
     
 def getWeather(zipCode):
@@ -58,7 +58,7 @@ def getCurrentTime(coordinates):
 
 	return currentTime
 
-def setWeatherBits(weatherDictionary):
+def setWeatherBits(weatherDictionary, userBrightness):
 	'''
 		Takes in the weather information and sets the bits correctly
 	'''
@@ -163,18 +163,31 @@ def setWeatherBits(weatherDictionary):
 	# Get the cloud percentage
 	# 1 = no clouds (i think)
 	cloudiness = weatherDictionary['clouds']['all']
-
-	if cloudiness < 25:
-		brightnessBits[2:-1] = [1, 1, 1, 1, 1]
-	elif cloudiness < 50:
-		brightnessBits[2:-1] = [1, 1, 0, 0 ,0]
-	elif cloudiness < 75:
-		brightnessBits[2:-1] = [1, 0, 0, 0, 0]
+	# Check if the user input a brightness. Only get cloud info if user brightness is 0
+	if userBrightness == 0:
+		if cloudiness < 25:
+			brightnessBits[2:-1] = [1, 1, 1, 1, 1]
+		elif cloudiness < 50:
+			brightnessBits[2:-1] = [1, 1, 0, 0 ,0]
+		elif cloudiness < 75:
+			brightnessBits[2:-1] = [1, 0, 0, 0, 0]
+		else:
+			brightnessBits[2:-1] = [0, 1, 0, 0, 0]
+	# Otherwise, convert to binary
 	else:
-		brightnessBits[2:-1] = [0, 1, 0, 0, 0]
+		# Take user input mod 32 (since we don't want input > 32)
+		userBrightness = userBrightness % 31
 
+		# Convert to binary
+		userBrightnessBinary = "{0:05b}".format(userBrightness)
+
+		# Make binary string into list
+		userBrightnessList = list(map(int, userBrightnessBinary))
+
+		# Add user brightness into array
+		brightnessBits[2:-1] = userBrightnessList	
 	
-
+		print(userBrightnessList)
 	finalArray = brightnessBits + weatherBits
 
 	print(finalArray)
